@@ -6,7 +6,7 @@ package mypackage;
  * @version 1.0
  * Date: 26-01-2014 sun
  * 
- * File: ImagePrject.java
+ * File: ImageProject.java
  * 
  * Description:
  * This is a test file.
