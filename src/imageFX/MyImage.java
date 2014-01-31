@@ -318,4 +318,4 @@ public class MyImage {
             }
         }
     }
-}//class ImageFX ends here
+}//class MyImage ends here
