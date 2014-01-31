@@ -1,20 +1,20 @@
 package mypackage;
 
 /**
- *
+ * File: ImageProject.java
+ * 
  * @author Yusuf Shakeel
  * @version 1.0
  * Date: 26-01-2014 sun
- * 
- * File: ImageProject.java
+
  * 
  * Description:
  * This is a test file.
  * 
  */
 
+import imageFX.*;
 import java.io.IOException;
-import imageX.ImageFX;
 
 public class ImageProject {
 
@@ -24,7 +24,7 @@ public class ImageProject {
     public static void main(String[] args)throws IOException {
         
         /** Create ImageFX object */
-        ImageFX iObj = new ImageFX();
+        MyImage iObj = new MyImage();
         
         /** Read Image File by passing the file path */
         String filePath = "D:\\LogoJava.jpg";
@@ -46,13 +46,13 @@ public class ImageProject {
         String ftype2 = "jpg";
         int picWidth = 10;
         int picHeight = 10;
-        ImageFX iObj2 = new ImageFX(picWidth, picHeight);
+        MyImage iObj2 = new MyImage(picWidth, picHeight);
         iObj2.writeImage(fname2, ftype2);
         
         System.out.println("iObj2 image written to file");
         
         /** create a new ImageFX object and initialize pixels */
-        ImageFX iObj3 = iObj2;
+        MyImage iObj3 = iObj2;
         iObj3.initPixelArray();
         
         System.out.println("iObj3=iObj2");
@@ -77,17 +77,17 @@ public class ImageProject {
         iObj3.writeImage("D:\\Output3.png", "png");
         
         /** create a random image and write (save) it to a file */
-        ImageFX iObj4 = new ImageFX(100,100);
+        MyImage iObj4 = new MyImage(100,100);
         iObj4.initPixelArray();
         iObj4.createRandomImage();
         iObj4.writeImage("D:\\Output4.png", "png");
         
         /** threshold image */
-        ImageFX iObj5 = new ImageFX();
-        iObj5.readImage("D:\\City.jpg");
+        MyImage iObj5 = new MyImage();
+        iObj5.readImage("D:\\lena.jpg");
         iObj5.initPixelArray();
-        iObj5.thresholdImageGrayscale(50);
-        iObj5.writeImage("D:\\City1.png", "png");
+        ThresholdImage.grayscale_Simple(80, iObj5);
+        iObj5.writeImage("D:\\lean1.jpg", "jpg");
         
     }//main() ends here
 }//class ImageProject ends here
