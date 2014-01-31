@@ -5,20 +5,27 @@ Image Processing project
 
 By: Yusuf Shakeel
 
-facebook.com/yusufshakeel
+Date: 26-Jan-2014 Sunday
 
-youtube.com/yusufshakeel
 
-github.com/yusufshakeel
+Note
+----
+This project is in development stage so files will get modified quite often.
 
 
 Content
 -------
 
-* ImageFX.java
+Directories:
 
-  Desc: This file contains ImageFX class which includes different methods to process the image.
+ * src - Holds the source code files.
 
-* ImageProject.java
+ * src/imageFX - This directory is the ENGINE of the project. It contains .java files to process image.
 
-  Desc: Test file that uses methods of ImageFX class
+ * src/myPackage - This directory contains .java files that uses the ENGINE to give output.
+
+Files:
+
+ * src/imageFX/MyImage.java - It contains MyImage class that is used to creat image objects. It comes with commonly used methods related to an image.
+
+ * src/imageFX/ThresholdImage.java - It contains ThresholdImage class that is used to perform image thresholding.
