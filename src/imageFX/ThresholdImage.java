@@ -15,7 +15,7 @@ public class ThresholdImage {
     
     /**
      * This method will threshold the image. It will generate a Black&White image.
-     * 
+//     * 
      * For a given pixel at coordinate (x,y) average pixel value is
      * avgPixelValue = (r+g+b)/3
      * If thresholdValue > avgPixelValue then set Pixel (x,y) to BLACK

@@ -84,10 +84,34 @@ public class ImageProject {
         
         /** threshold image */
         MyImage iObj5 = new MyImage();
-        iObj5.readImage("D:\\lena.jpg");
+        iObj5.readImage("D:\\Letter.jpg");
         iObj5.initPixelArray();
-        ThresholdImage.grayscale_Simple(80, iObj5);
-        iObj5.writeImage("D:\\lena1.jpg", "jpg");
+        ThresholdImage.grayscale_Simple(64, iObj5);
+        iObj5.writeImage("D:\\Letter1-threshold-simple.jpg", "jpg");
+        
+        /** median filtering image */
+        iObj5.readImage("D:\\Letter.jpg");
+        iObj5.initPixelArray();
+        FilterImage.medianFilter(iObj5, 7);
+        iObj5.writeImage("D:\\Letter1-median-filter.jpg", "jpg");
+        
+        /** image negative */
+        iObj5.readImage("D:\\Letter.jpg");
+        iObj5.initPixelArray();
+        ImageFX.negative(iObj5);
+        iObj5.writeImage("D:\\Letter1-negative.jpg", "jpg");
+        
+        /** image flip horizontal */
+        iObj5.readImage("D:\\Letter.jpg");
+        iObj5.initPixelArray();
+        ImageFX.flipHorizontal(iObj5);
+        iObj5.writeImage("D:\\Letter1-flip-horizontal.jpg", "jpg");
+        
+        /** image flip vertical */
+        iObj5.readImage("D:\\Letter.jpg");
+        iObj5.initPixelArray();
+        ImageFX.flipVertical(iObj5);
+        iObj5.writeImage("D:\\Letter1-flip-vertical.jpg", "jpg");
         
     }//main() ends here
 }//class ImageProject ends here

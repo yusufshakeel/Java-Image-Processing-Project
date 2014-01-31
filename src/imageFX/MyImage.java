@@ -272,7 +272,7 @@ public class MyImage {
     }
     
     /**
-     * This method will set the value of the pixel of the image at the coordinate (x,y).
+     * This method will set the value of the pixel of the image at the coordinate (x,y) to ARGB value.
      * 
      * @param x the x coordinate of the pixel
      * @param y the y coordinate of the pixel
@@ -289,6 +289,19 @@ public class MyImage {
         p = p | (red << 16);
         p = p | (alpha << 24);
         pixels[x+(y*height)] = p;
+        updateImagePixelAt(x,y);
+    }
+    
+    /**
+     * This method will set the value of the pixel of the image at the coordinate (x,y) to value.
+     * 
+     * @param x the x coordinate of the pixel
+     * @param y the y coordinate of the pixel
+     * @param pixelValue the pixel value to set
+     * 
+     */
+    public void setPixelToValue(int x, int y, int pixelValue){
+        pixels[x+(y*height)] = pixelValue;
         updateImagePixelAt(x,y);
     }
     
@@ -318,4 +331,4 @@ public class MyImage {
             }
         }
     }
-}//class MyImage ends here
+}//class ImageFX ends here
