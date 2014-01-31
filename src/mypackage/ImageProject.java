@@ -87,7 +87,7 @@ public class ImageProject {
         iObj5.readImage("D:\\lena.jpg");
         iObj5.initPixelArray();
         ThresholdImage.grayscale_Simple(80, iObj5);
-        iObj5.writeImage("D:\\lean1.jpg", "jpg");
+        iObj5.writeImage("D:\\lena1.jpg", "jpg");
         
     }//main() ends here
 }//class ImageProject ends here
