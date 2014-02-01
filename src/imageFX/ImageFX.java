@@ -6,7 +6,6 @@ package imageFX;
  * @author Yusuf Shakeel
  * @version 1.0
  * Date: 26-01-2014 sun
-
  * 
  * Description:
  * Contains common image processing methods.

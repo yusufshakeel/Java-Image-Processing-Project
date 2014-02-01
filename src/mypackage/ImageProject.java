@@ -6,7 +6,6 @@ package mypackage;
  * @author Yusuf Shakeel
  * @version 1.0
  * Date: 26-01-2014 sun
-
  * 
  * Description:
  * This is a test file.
