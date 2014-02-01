@@ -26,10 +26,10 @@ Directories:
 
 Files:
 
- * src/imageFX/FilterImage.java - It contains filtering methods.
+ * src/imageFX/FilterImage.java - Contains filtering methods.
  
- * src/imageFX/ImageFX.java - It contains common image processing functions like flip, negative etc.
+ * src/imageFX/ImageFX.java - Contains common image processing functions like flip, negative etc.
 
- * src/imageFX/MyImage.java - It contains MyImage class that is used to creat image objects. It comes with commonly used methods related to an image.
+ * src/imageFX/MyImage.java - Contains MyImage class that is used to creat image objects. It comes with commonly used methods related to an image.
 
- * src/imageFX/ThresholdImage.java - It contains thresholding methods.
+ * src/imageFX/ThresholdImage.java - Contains thresholding methods.
