@@ -50,13 +50,13 @@ public class FilterImage {
                     }
                 }
                 java.util.Arrays.sort(mask);
-                outputPixels[x+(y*img.getImageHeight())] = mask[(maskSize*maskSize)/2];
+                outputPixels[x+(y*img.getImageWidth())] = mask[(maskSize*maskSize)/2];
             }
         }
         /** Write the output pixels to the image pixels */
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
-                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageHeight())]);
+                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageWidth())]);
             }
         }
     }
@@ -110,13 +110,13 @@ public class FilterImage {
                     }
                 }
                 java.util.Arrays.sort(mask);
-                outputPixels[x+(y*img.getImageHeight())] = mask[(maskSize*maskSize)/2];
+                outputPixels[x+(y*img.getImageWidth())] = mask[(maskSize*maskSize)/2];
             }
         }
         /** Write the output pixels to the image pixels */
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
-                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageHeight())]);
+                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageWidth())]);
             }
         }
     }
