@@ -20,7 +20,13 @@ public class ImageProject {
      * @param args the command line arguments
      */
     public static void main(String[] args)throws IOException {
-        
+        //testMyImageClass();
+        //testThresholdImageClass();
+        //testMedianFilterClass();
+        testImageFXClass();
+    }//main() ends here
+    
+    public static void testMyImageClass(){
         /** Create ImageFX object */
         MyImage iObj = new MyImage();
         
@@ -79,61 +85,69 @@ public class ImageProject {
         iObj4.initPixelArray();
         iObj4.createRandomImage();
         iObj4.writeImage("D:\\Output4.png", "png");
-        
-        /** threshold image */
-        MyImage iObj5 = new MyImage();
-        iObj5.readImage("D:\\Letter.jpg");
-        iObj5.initPixelArray();
-        ThresholdImage.grayscale_Simple(64, iObj5);
-        iObj5.writeImage("D:\\Letter1-threshold-simple.jpg", "jpg");
-        
-        /** median filtering image */
-        iObj5.readImage("D:\\Letter.jpg");
-        iObj5.initPixelArray();
-        FilterImage.medianFilter_ZeroFill(iObj5, 3);
-        iObj5.writeImage("D:\\Letter1-median-filter-zero-fill.jpg", "jpg");
-        
-        /** median filtering image */
-        iObj5.readImage("D:\\Letter.jpg");
-        iObj5.initPixelArray();
-        FilterImage.medianFilter_ValueFill(iObj5, 3);
-        iObj5.writeImage("D:\\Letter1-median-filter-value-fill.jpg", "jpg");
+    }
+    
+    public static void testImageFXClass(){
+        MyImage iObj = new MyImage();
         
         /** image negative */
-        iObj5.readImage("D:\\Letter.jpg");
-        iObj5.initPixelArray();
-        ImageFX.negative(iObj5);
-        iObj5.writeImage("D:\\Letter1-negative.jpg", "jpg");
+        iObj.readImage("D:\\Taj.jpg");
+        iObj.initPixelArray();
+        ImageFX.negative(iObj);
+        iObj.writeImage("D:\\Taj1-negative.jpg", "jpg");
         
         /** image flip horizontal */
-        iObj5.readImage("D:\\Letter.jpg");
-        iObj5.initPixelArray();
-        ImageFX.flipHorizontal(iObj5);
-        iObj5.writeImage("D:\\Letter1-flip-horizontal.jpg", "jpg");
+        iObj.readImage("D:\\Taj.jpg");
+        iObj.initPixelArray();
+        ImageFX.flipHorizontal(iObj);
+        iObj.writeImage("D:\\Taj1-flip-horizontal.jpg", "jpg");
         
         /** image flip vertical */
-        iObj5.readImage("D:\\Letter.jpg");
-        iObj5.initPixelArray();
-        ImageFX.flipVertical(iObj5);
-        iObj5.writeImage("D:\\Letter1-flip-vertical.jpg", "jpg");
+        iObj.readImage("D:\\Taj.jpg");
+        iObj.initPixelArray();
+        ImageFX.flipVertical(iObj);
+        iObj.writeImage("D:\\Taj1-flip-vertical.jpg", "jpg");
         
         /** image transparency */
-        iObj5.readImage("D:\\Apple.png");
-        iObj5.initPixelArray();
-        ImageFX.transparent(iObj5, 64);
-        iObj5.writeImage("D:\\Apple1-transparency.png", "png");
+        iObj.readImage("D:\\Apple.png");
+        iObj.initPixelArray();
+        ImageFX.transparentAllPixels(iObj, 64);
+        iObj.writeImage("D:\\Apple1-transparency.png", "png");
         
         /** image transparent selective pixels */
-        iObj5.readImage("D:\\Apple.png");
-        iObj5.initPixelArray();
-        ImageFX.transparentAlphaPixels(iObj5, 64);
-        iObj5.writeImage("D:\\Apple1-transparency-alpha-pixels.png", "png");
+        iObj.readImage("D:\\Apple.png");
+        iObj.initPixelArray();
+        ImageFX.transparentAlphaPixels(iObj, 64);
+        iObj.writeImage("D:\\Apple1-transparency-alpha-pixels.png", "png");
         
         /** image transparent selective pixels */
-        iObj5.readImage("D:\\Apple.png");
+        iObj.readImage("D:\\Apple.png");
+        iObj.initPixelArray();
+        ImageFX.sharpen(iObj);
+        iObj.writeImage("D:\\Apple1-sharpen.png", "png");
+    }
+    
+    public static void testThresholdImageClass(){        
+        /** threshold image */
+        MyImage iObj5 = new MyImage();
+        iObj5.readImage("D:\\Taj.jpg");
         iObj5.initPixelArray();
-        ImageFX.sharpen(iObj5);
-        iObj5.writeImage("D:\\Apple1-sharpen.png", "png");
+        ThresholdImage.grayscale_Simple(64, iObj5);
+        iObj5.writeImage("D:\\Taj1-threshold-simple.jpg", "jpg");        
+    }
+    
+    public static void testFilterImageClass(){
+        MyImage iObj = new MyImage();
+        /** median filtering image */
+        iObj.readImage("D:\\Taj.jpg");
+        iObj.initPixelArray();
+        FilterImage.medianFilter_ZeroFill(iObj, 3);
+        iObj.writeImage("D:\\Taj1-median-filter-zero-fill.jpg", "jpg");
         
-    }//main() ends here
+        /** median filtering image */
+        iObj.readImage("D:\\Taj.jpg");
+        iObj.initPixelArray();
+        FilterImage.medianFilter_ValueFill(iObj, 3);
+        iObj.writeImage("D:\\Taj1-median-filter-value-fill.jpg", "jpg");
+    }
 }//class ImageProject ends here
