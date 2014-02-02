@@ -62,10 +62,10 @@ public class ImageFX {
     /**
      * This method will change the transparency (alpha) of all the pixels of the image.
      * 
-     * @param img The image to be flipped vertically.
+     * @param img The image pixels to change.
      * @param alpha The alpha value [0-255] to set in each pixels of the image.
      */
-    public static void transparent(MyImage img, int alpha){
+    public static void transparentAllPixels(MyImage img, int alpha){
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
                 img.setAlpha(x, y, alpha);
@@ -77,7 +77,7 @@ public class ImageFX {
      * This method will change the transparency (alpha) of those pixels which have
      * alpha value greater than 0.
      * 
-     * @param img The image to be flipped vertically.
+     * @param img The image pixels to change.
      * @param alpha The alpha value [0-255] to set in each pixels of the image.
      */
     public static void transparentAlphaPixels(MyImage img, int alpha){
@@ -93,7 +93,7 @@ public class ImageFX {
     /**
      * This method will sharpen the image.
      * 
-     * @param img The image to be flipped vertically.
+     * @param img The image to sharpen.
      * @param alpha The alpha value [0-255] to set in each pixels of the image.
      */
     public static void sharpen(MyImage img){
