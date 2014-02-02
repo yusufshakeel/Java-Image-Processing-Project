@@ -120,7 +120,7 @@ public class ImageProject {
         ImageFX.transparentAlphaPixels(iObj, 64);
         iObj.writeImage("D:\\Apple1-transparency-alpha-pixels.png", "png");
         
-        /** image transparent selective pixels */
+        /** image sharpen */
         iObj.readImage("D:\\Apple.png");
         iObj.initPixelArray();
         ImageFX.sharpen(iObj);
