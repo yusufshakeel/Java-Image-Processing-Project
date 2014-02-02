@@ -137,7 +137,7 @@ public class MyImage {
         pixels = new int[totalPixels];
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
-                pixels[x+(y*height)] = image.getRGB(x, y);
+                pixels[x+(y*width)] = image.getRGB(x, y);
             }
         }
     }
@@ -153,7 +153,7 @@ public class MyImage {
      * 255 means opaque
      */
     public int getAlpha(int x, int y){
-        return (pixels[x+(y*height)] >> 24) & 0xFF;
+        return (pixels[x+(y*width)] >> 24) & 0xFF;
     }
     
     /**
@@ -167,7 +167,7 @@ public class MyImage {
      * 255 means fully red
      */
     public int getRed(int x, int y){
-        return (pixels[x+(y*height)] >> 16) & 0xFF;
+        return (pixels[x+(y*width)] >> 16) & 0xFF;
     }
     
     /**
@@ -181,7 +181,7 @@ public class MyImage {
      * 255 means fully green
      */
     public int getGreen(int x, int y){
-        return (pixels[x+(y*height)] >> 8) & 0xFF;
+        return (pixels[x+(y*width)] >> 8) & 0xFF;
     }
     
     /**
@@ -195,7 +195,7 @@ public class MyImage {
      * 255 means fully blue
      */
     public int getBlue(int x, int y){
-        return pixels[x+(y*height)] & 0xFF;
+        return pixels[x+(y*width)] & 0xFF;
     }
     
     /**
@@ -207,7 +207,7 @@ public class MyImage {
      * 
      */
     public int getPixel(int x, int y){
-        return pixels[x+(y*height)];
+        return pixels[x+(y*width)];
     }
     
     /**
@@ -221,7 +221,7 @@ public class MyImage {
      * 255 means opaque
      */
     public void setAlpha(int x, int y, int alpha){
-        pixels[x+(y*height)] = (alpha<<24) | (pixels[x+(y*height)] & 0x00FFFFFF);
+        pixels[x+(y*width)] = (alpha<<24) | (pixels[x+(y*width)] & 0x00FFFFFF);
         updateImagePixelAt(x,y);
     }
     
@@ -236,7 +236,7 @@ public class MyImage {
      * 255 means fully red
      */
     public void setRed(int x, int y, int red){
-        pixels[x+(y*height)] = (red<<16) | (pixels[x+(y*height)] & 0xFF00FFFF);
+        pixels[x+(y*width)] = (red<<16) | (pixels[x+(y*width)] & 0xFF00FFFF);
         updateImagePixelAt(x,y);
     }
     
@@ -251,7 +251,7 @@ public class MyImage {
      * 255 means fully green
      */
     public void setGreen(int x, int y, int green){
-        pixels[x+(y*height)] = (green<<8) | (pixels[x+(y*height)] & 0xFFFF00FF);
+        pixels[x+(y*width)] = (green<<8) | (pixels[x+(y*width)] & 0xFFFF00FF);
         updateImagePixelAt(x,y);
     }
     
@@ -266,7 +266,7 @@ public class MyImage {
      * 255 means fully blue
      */
     public void setBlue(int x, int y, int blue){
-        pixels[x+(y*height)] = blue | (pixels[x+(y*height)] & 0xFFFFFF00);
+        pixels[x+(y*width)] = blue | (pixels[x+(y*width)] & 0xFFFFFF00);
         updateImagePixelAt(x,y);
     }
     
@@ -287,7 +287,7 @@ public class MyImage {
         p = p | (green << 8);
         p = p | (red << 16);
         p = p | (alpha << 24);
-        pixels[x+(y*height)] = p;
+        pixels[x+(y*width)] = p;
         updateImagePixelAt(x,y);
     }
     
@@ -300,7 +300,7 @@ public class MyImage {
      * 
      */
     public void setPixelToValue(int x, int y, int pixelValue){
-        pixels[x+(y*height)] = pixelValue;
+        pixels[x+(y*width)] = pixelValue;
         updateImagePixelAt(x,y);
     }
     
@@ -312,7 +312,7 @@ public class MyImage {
      * 
      */
     public void updateImagePixelAt(int x, int y){
-        image.setRGB(x, y, pixels[x+(y*height)]);
+        image.setRGB(x, y, pixels[x+(y*width)]);
     }
     
     /**
