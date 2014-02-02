@@ -96,7 +96,6 @@ public class ImageFX {
      * This method will sharpen the image.
      * 
      * @param img The image to sharpen.
-     * @param alpha The alpha value [0-255] to set in each pixels of the image.
      */
     public static void sharpen(MyImage img){
         

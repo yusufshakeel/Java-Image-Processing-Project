@@ -35,15 +35,54 @@ public class ImageProject {
         //System.out.println("Dimension: "+iObj.getImageWidth()+"x"+iObj.getImageHeight());
         //System.out.println("Total Pixels: "+iObj.getImageTotalPixels());
         //iObj.initPixelArray();
-        iObj.readImage("D:\\NoiseImage2.jpg");
+        iObj.readImage("D:\\Taj.jpg");
         System.out.println("Dimension: "+iObj.getImageWidth()+"x"+iObj.getImageHeight());
         System.out.println("Total Pixels: "+iObj.getImageTotalPixels());
         iObj.initPixelArray();
-        //ImageFX.sharpen(iObj);
         FilterImage.medianFilter_ValueFill(iObj, 3);
-        iObj.writeImage("D:\\NoiseImage-median-filter-value-fill.jpg", "jpg");
+        iObj.writeImage("D:\\Taj-median-filter-value-fill.jpg", "jpg");
     }
     
+    public static void testImageFXClass(){
+        MyImage iObj = new MyImage();
+        
+        /** image negative */
+        iObj.readImage("D:\\Taj.jpg");
+        iObj.initPixelArray();
+        ImageFX.negative(iObj);
+        iObj.writeImage("D:\\Taj1-negative.jpg", "jpg");
+        
+        /** image flip horizontal */
+        iObj.readImage("D:\\Taj.jpg");
+        iObj.initPixelArray();
+        ImageFX.flipHorizontal(iObj);
+        iObj.writeImage("D:\\Taj1-flip-horizontal.jpg", "jpg");
+        
+        /** image flip vertical */
+        iObj.readImage("D:\\Taj.jpg");
+        iObj.initPixelArray();
+        ImageFX.flipVertical(iObj);
+        iObj.writeImage("D:\\Taj1-flip-vertical.jpg", "jpg");
+        
+        /** image transparency */
+        iObj.readImage("D:\\Apple.png");
+        iObj.initPixelArray();
+        ImageFX.transparentAllPixels(iObj, 64);
+        iObj.writeImage("D:\\Apple1-transparency.png", "png");
+        
+        /** image transparent selective pixels */
+        iObj.readImage("D:\\Apple.png");
+        iObj.initPixelArray();
+        ImageFX.transparentAlphaPixels(iObj, 64);
+        iObj.writeImage("D:\\Apple1-transparency-alpha-pixels.png", "png");
+        
+        /** image sharpen */
+        iObj.readImage("D:\\Apple.png");
+        iObj.initPixelArray();
+        ImageFX.sharpen(iObj);
+        iObj.writeImage("D:\\Apple1-sharpen.png", "png");
+    }
+
     public static void testMyImageClass(){
         /** Create ImageFX object */
         MyImage iObj = new MyImage();
@@ -103,46 +142,6 @@ public class ImageProject {
         iObj4.initPixelArray();
         iObj4.createRandomImage();
         iObj4.writeImage("D:\\Output4.png", "png");
-    }
-    
-    public static void testImageFXClass(){
-        MyImage iObj = new MyImage();
-        
-        /** image negative */
-        iObj.readImage("D:\\Taj.jpg");
-        iObj.initPixelArray();
-        ImageFX.negative(iObj);
-        iObj.writeImage("D:\\Taj1-negative.jpg", "jpg");
-        
-        /** image flip horizontal */
-        iObj.readImage("D:\\Taj.jpg");
-        iObj.initPixelArray();
-        ImageFX.flipHorizontal(iObj);
-        iObj.writeImage("D:\\Taj1-flip-horizontal.jpg", "jpg");
-        
-        /** image flip vertical */
-        iObj.readImage("D:\\Taj.jpg");
-        iObj.initPixelArray();
-        ImageFX.flipVertical(iObj);
-        iObj.writeImage("D:\\Taj1-flip-vertical.jpg", "jpg");
-        
-        /** image transparency */
-        iObj.readImage("D:\\Apple.png");
-        iObj.initPixelArray();
-        ImageFX.transparentAllPixels(iObj, 64);
-        iObj.writeImage("D:\\Apple1-transparency.png", "png");
-        
-        /** image transparent selective pixels */
-        iObj.readImage("D:\\Apple.png");
-        iObj.initPixelArray();
-        ImageFX.transparentAlphaPixels(iObj, 64);
-        iObj.writeImage("D:\\Apple1-transparency-alpha-pixels.png", "png");
-        
-        /** image sharpen */
-        iObj.readImage("D:\\Apple.png");
-        iObj.initPixelArray();
-        ImageFX.sharpen(iObj);
-        iObj.writeImage("D:\\Apple1-sharpen.png", "png");
     }
     
     public static void testThresholdImageClass(){        
