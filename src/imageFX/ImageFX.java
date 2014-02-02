@@ -93,6 +93,69 @@ public class ImageFX {
     }
     
     /**
+     * This method will turn color image to gray scale image.
+     * 
+     * @param img The image pixels to change.
+     */
+    public static void grayScale(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int r = img.getRed(x, y);
+                int g = img.getGreen(x, y);
+                int b = img.getBlue(x, y);
+                int grayscale = (r+g+b)/3;
+                img.setPixel(x, y, a, grayscale, grayscale, grayscale);
+            }
+        }
+    }
+    
+    /**
+     * This method will turn color image to red image.
+     * 
+     * @param img The image pixels to change.
+     */
+    public static void redImage(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int r = img.getRed(x, y);
+                img.setPixel(x, y, a, r, 0, 0);
+            }
+        }
+    }
+    
+    /**
+     * This method will turn color image to green image.
+     * 
+     * @param img The image pixels to change.
+     */
+    public static void greenImage(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int g = img.getGreen(x, y);
+                img.setPixel(x, y, a, 0, g, 0);
+            }
+        }
+    }
+    
+    /**
+     * This method will turn color image to blue image.
+     * 
+     * @param img The image pixels to change.
+     */
+    public static void blueImage(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int b = img.getBlue(x, y);
+                img.setPixel(x, y, a, 0, 0, b);
+            }
+        }
+    }
+    
+    /**
      * This method will sharpen the image.
      * 
      * @param img The image to sharpen.
@@ -107,7 +170,7 @@ public class ImageFX {
                                 -1,  5, -1,
                                  0, -1,  0};
         
-        int maskSize = 3;   //The width size of the mask.
+        int maskSize = 3;   //The width of the mask.
         
         /**
          * Buffered array of pixels holds the intermediate value of pixels that
@@ -131,7 +194,7 @@ public class ImageFX {
                 buff = new int[9];
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r >= img.getImageHeight() || c < 0 || c >= img.getImageWidth()){
+                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
                             /** Some portion of the mask is outside the image. */
                             int tr = r, tc = c;
                             if(r < 0){

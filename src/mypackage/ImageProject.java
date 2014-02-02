@@ -30,17 +30,16 @@ public class ImageProject {
     public static void test(){
         MyImage iObj = new MyImage();
         
-        /** image negative */
-        //iObj.readImage("D:\\Taj.jpg");
-        //System.out.println("Dimension: "+iObj.getImageWidth()+"x"+iObj.getImageHeight());
-        //System.out.println("Total Pixels: "+iObj.getImageTotalPixels());
-        //iObj.initPixelArray();
-        iObj.readImage("D:\\Taj.jpg");
+        iObj.readImage("D:\\child.jpg");
         System.out.println("Dimension: "+iObj.getImageWidth()+"x"+iObj.getImageHeight());
         System.out.println("Total Pixels: "+iObj.getImageTotalPixels());
         iObj.initPixelArray();
-        FilterImage.medianFilter_ValueFill(iObj, 3);
-        iObj.writeImage("D:\\Taj-median-filter-value-fill.jpg", "jpg");
+        //ImageFX.sharpen(iObj);
+        ThresholdImage.grayscale_Simple(120, iObj);
+        //ImageFX.blur_N9(iObj);
+        //ImageFX.blueImage(iObj);
+        //FilterImage.medianFilter_ValueFill(iObj, 3);
+        iObj.writeImage("D:\\child-threshold-image.jpg", "jpg");
     }
     
     public static void testImageFXClass(){
