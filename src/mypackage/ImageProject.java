@@ -23,8 +23,26 @@ public class ImageProject {
         //testMyImageClass();
         //testThresholdImageClass();
         //testMedianFilterClass();
-        testImageFXClass();
+        //testImageFXClass();
+        test();
     }//main() ends here
+    
+    public static void test(){
+        MyImage iObj = new MyImage();
+        
+        /** image negative */
+        //iObj.readImage("D:\\Taj.jpg");
+        //System.out.println("Dimension: "+iObj.getImageWidth()+"x"+iObj.getImageHeight());
+        //System.out.println("Total Pixels: "+iObj.getImageTotalPixels());
+        //iObj.initPixelArray();
+        iObj.readImage("D:\\NoiseImage2.jpg");
+        System.out.println("Dimension: "+iObj.getImageWidth()+"x"+iObj.getImageHeight());
+        System.out.println("Total Pixels: "+iObj.getImageTotalPixels());
+        iObj.initPixelArray();
+        //ImageFX.sharpen(iObj);
+        FilterImage.medianFilter_ValueFill(iObj, 3);
+        iObj.writeImage("D:\\NoiseImage-median-filter-value-fill.jpg", "jpg");
+    }
     
     public static void testMyImageClass(){
         /** Create ImageFX object */
