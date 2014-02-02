@@ -9,7 +9,6 @@ package imageFX;
  * @author Yusuf Shakeel
  * @version 1.0
  * date: 26-01-2014 sun
- * 
  */
 public class ThresholdImage {
     
