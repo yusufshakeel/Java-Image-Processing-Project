@@ -3,13 +3,12 @@ package mypackage;
 /**
  * File: ImageProject.java
  * 
- * @author Yusuf Shakeel
- * @version 1.0
- * Date: 26-01-2014 sun
- * 
  * Description:
  * This is a test file.
  * 
+ * @author Yusuf Shakeel
+ * @version 1.0
+ * Date: 26-01-2014 sun
  */
 
 import imageFX.*;
@@ -91,8 +90,14 @@ public class ImageProject {
         /** median filtering image */
         iObj5.readImage("D:\\Letter.jpg");
         iObj5.initPixelArray();
-        FilterImage.medianFilter(iObj5, 7);
-        iObj5.writeImage("D:\\Letter1-median-filter.jpg", "jpg");
+        FilterImage.medianFilter_ZeroFill(iObj5, 3);
+        iObj5.writeImage("D:\\Letter1-median-filter-zero-fill.jpg", "jpg");
+        
+        /** median filtering image */
+        iObj5.readImage("D:\\Letter.jpg");
+        iObj5.initPixelArray();
+        FilterImage.medianFilter_ValueFill(iObj5, 3);
+        iObj5.writeImage("D:\\Letter1-median-filter-value-fill.jpg", "jpg");
         
         /** image negative */
         iObj5.readImage("D:\\Letter.jpg");
@@ -111,6 +116,24 @@ public class ImageProject {
         iObj5.initPixelArray();
         ImageFX.flipVertical(iObj5);
         iObj5.writeImage("D:\\Letter1-flip-vertical.jpg", "jpg");
+        
+        /** image transparency */
+        iObj5.readImage("D:\\Apple.png");
+        iObj5.initPixelArray();
+        ImageFX.transparent(iObj5, 64);
+        iObj5.writeImage("D:\\Apple1-transparency.png", "png");
+        
+        /** image transparent selective pixels */
+        iObj5.readImage("D:\\Apple.png");
+        iObj5.initPixelArray();
+        ImageFX.transparentAlphaPixels(iObj5, 64);
+        iObj5.writeImage("D:\\Apple1-transparency-alpha-pixels.png", "png");
+        
+        /** image transparent selective pixels */
+        iObj5.readImage("D:\\Apple.png");
+        iObj5.initPixelArray();
+        ImageFX.sharpen(iObj5);
+        iObj5.writeImage("D:\\Apple1-sharpen.png", "png");
         
     }//main() ends here
 }//class ImageProject ends here
