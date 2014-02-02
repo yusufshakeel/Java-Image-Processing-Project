@@ -61,6 +61,7 @@ public class ImageFX {
     
     /**
      * This method will change the transparency (alpha) of all the pixels of the image.
+     * Works well with .png files.
      * 
      * @param img The image pixels to change.
      * @param alpha The alpha value [0-255] to set in each pixels of the image.
@@ -76,6 +77,7 @@ public class ImageFX {
     /**
      * This method will change the transparency (alpha) of those pixels which have
      * alpha value greater than 0.
+     * Works well with .png files.
      * 
      * @param img The image pixels to change.
      * @param alpha The alpha value [0-255] to set in each pixels of the image.
@@ -158,13 +160,13 @@ public class ImageFX {
                 }
                 
                 /** Save result in outputPixels array. */
-                outputPixels[x+(y*img.getImageHeight())] = sum;
+                outputPixels[x+(y*img.getImageWidth())] = sum;
             }
         }
         /** Write the output pixels to the image pixels */
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
-                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageHeight())]);
+                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageWidth())]);
             }
         }
     }
