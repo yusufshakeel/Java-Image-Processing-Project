@@ -26,6 +26,8 @@ Directories:
 
 Files:
 
+ * src/imageFX/DYCanvas.java - This file contains some random canvas creating method.
+
  * src/imageFX/FilterImage.java - Contains filtering methods.
  
  * src/imageFX/ImageFX.java - Contains common image processing functions like flip, negative etc.
