@@ -30,16 +30,15 @@ public class ImageProject {
     public static void test(){
         MyImage iObj = new MyImage();
         
-        iObj.readImage("D:\\kid.jpg");
+        iObj.readImage("D:\\Taj.jpg");
         System.out.println("Dimension: "+iObj.getImageWidth()+"x"+iObj.getImageHeight());
         System.out.println("Total Pixels: "+iObj.getImageTotalPixels());
         iObj.initPixelArray();
-        DYCanvas.colorMix(iObj);
+        ImageFX.blur_N16(iObj);
+        //DYCanvas.colorMix(iObj);
         //ThresholdImage.grayscale_Simple(120, iObj);
-        //ImageFX.blur_N9(iObj);
-        //ImageFX.blueImage(iObj);
-        //FilterImage.medianFilter_ValueFill(iObj, 3);
-        iObj.writeImage("D:\\kid-color-mix.jpg", "jpg");
+        //FilterImage.meanFilter_ZeroFill(iObj, 3);
+        iObj.writeImage("D:\\Taj-blur-n16.jpg", "jpg");
     }
     
     public static void testImageFXClass(){
