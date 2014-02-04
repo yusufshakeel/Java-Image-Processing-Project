@@ -22,23 +22,39 @@ public class ImageProject {
     public static void main(String[] args)throws IOException {
         //testMyImageClass();
         //testThresholdImageClass();
-        //testMedianFilterClass();
+        //testFilterImageClass();
         //testImageFXClass();
         test();
+        //testCropImage();
+        //testResize();
     }//main() ends here
     
     public static void test(){
         MyImage iObj = new MyImage();
         
-        iObj.readImage("D:\\Taj.jpg");
+        iObj.readImage("D:\\AirBalloon.jpg");
         System.out.println("Dimension: "+iObj.getImageWidth()+"x"+iObj.getImageHeight());
         System.out.println("Total Pixels: "+iObj.getImageTotalPixels());
         iObj.initPixelArray();
-        ImageFX.blur_N16(iObj);
+        //ImageFX.blur_N16(iObj);
+        //ImageFX.grayScale(iObj);
         //DYCanvas.colorMix(iObj);
+        //DYCanvas.colorMix3(iObj);
         //ThresholdImage.grayscale_Simple(120, iObj);
         //FilterImage.meanFilter_ZeroFill(iObj, 3);
-        iObj.writeImage("D:\\Taj-blur-n16.jpg", "jpg");
+        iObj.writeImage("D:\\AirBalloon-edge-detect.jpg", "jpg");
+    }
+    
+    public static void testCropImage(){
+        MyImage obj1 = new MyImage();
+        obj1.readImage("D:\\Taj.jpg");
+        obj1.initPixelArray();
+        
+        MyImage obj2 = new MyImage(600,400);
+        obj2.initPixelArray();
+        
+        //ImageFX.crop(obj1, obj2, 0, 0, 599, 399);
+        obj2.writeImage("D:\\Taj-crop.jpg", "jpg");
     }
     
     public static void testImageFXClass(){
@@ -147,22 +163,22 @@ public class ImageProject {
         MyImage iObj5 = new MyImage();
         iObj5.readImage("D:\\Taj.jpg");
         iObj5.initPixelArray();
-        ThresholdImage.grayscale_Simple(64, iObj5);
+        ThresholdImage.grayscale_Simple(160, iObj5);
         iObj5.writeImage("D:\\Taj1-threshold-simple.jpg", "jpg");        
     }
     
     public static void testFilterImageClass(){
         MyImage iObj = new MyImage();
         /** median filtering image */
-        iObj.readImage("D:\\Taj.jpg");
+        iObj.readImage("D:\\NoiseImage2.jpg");
         iObj.initPixelArray();
         FilterImage.medianFilter_ZeroFill(iObj, 3);
-        iObj.writeImage("D:\\Taj1-median-filter-zero-fill.jpg", "jpg");
+        iObj.writeImage("D:\\NoiseImage-median-filter-zero-fill.jpg", "jpg");
         
         /** median filtering image */
-        iObj.readImage("D:\\Taj.jpg");
+        iObj.readImage("D:\\NoiseImage2.jpg");
         iObj.initPixelArray();
         FilterImage.medianFilter_ValueFill(iObj, 3);
-        iObj.writeImage("D:\\Taj1-median-filter-value-fill.jpg", "jpg");
+        iObj.writeImage("D:\\NoiseImage-median-filter-value-fill.jpg", "jpg");
     }
 }//class ImageProject ends here
