@@ -32,6 +32,6 @@ Files:
  
  * src/imageFX/ImageFX.java - Contains common image processing functions like flip, negative etc.
 
- * src/imageFX/MyImage.java - Contains MyImage class that is used to creat image objects. It comes with commonly used methods related to an image.
+ * src/imageFX/MyImage.java - Contains MyImage class that is used to create image objects.
 
  * src/imageFX/ThresholdImage.java - Contains thresholding methods.
