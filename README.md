@@ -63,6 +63,9 @@ So your Test.java file may look something like this
     }//class Test ends here
 
 
+### For more details check the project wiki [https://github.com/yusufshakeel/Java-Image-Processing-Project/wiki] (https://github.com/yusufshakeel/Java-Image-Processing-Project/wiki)
+
+
 
 # License
 
