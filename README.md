@@ -39,6 +39,30 @@ Files:
  * src/imageFX/ThresholdImage.java - Contains thresholding methods.
 
 
+### How to use the imageFX package in your project?
+
+1. Download the [Java-Image-Processing-Project](https://github.com/yusufshakeel/Java-Image-Processing-Project) repository and copy paste the imageFX directory inside your project directory.
+2. Import the imageFX classes inside your java file(s) where you want to use it.
+
+For instance, if you want to import the imageFX classes inside your Test.java file, then write the following line
+
+`import imageFX.*;`
+
+inside your Test.java file.
+
+So your Test.java file may look something like this
+
+    import java.io.*;
+
+    import imageFX.*;
+
+    public class Test{
+
+        //your code goes here...
+
+    }//class Test ends here
+
+
 
 # License
 
