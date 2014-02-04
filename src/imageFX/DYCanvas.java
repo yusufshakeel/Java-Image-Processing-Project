@@ -85,7 +85,7 @@ public class DYCanvas {
     /**
      * This method will mix colors.
      * 
-     * @param img The image to blur.
+     * @param img The image color to mix.
      */
     public static void colorMix2(MyImage img){
         
@@ -166,7 +166,7 @@ public class DYCanvas {
     /**
      * This method will mix colors.
      * 
-     * @param img The image to blur.
+     * @param img The image color to mix.
      */
     public static void colorMix3(MyImage img){
         
