@@ -297,7 +297,7 @@ public class ImageFX {
      * 
      * @param img The image to blur.
      */
-    public static void blur_N9(MyImage img){
+    public static void blur_D9(MyImage img){
         
         int maskSize = 3;   //The width of the mask.
         
@@ -373,7 +373,7 @@ public class ImageFX {
      * 
      * @param img The image to blur.
      */
-    public static void blur_N16(MyImage img){
+    public static void blur_D16(MyImage img){
         
         /**
          * Mask is a 2D square of odd size like 3x3
