@@ -29,7 +29,7 @@ public class FilterImage {
 
         /**
          * Buff is a 2D square of odd size like 3x3, 5x5, 7x7, ...
-         * For simplicity converting it into 1D array.
+         * For simplicity storing it into 1D array.
          */
         int buff[];
         
@@ -78,7 +78,7 @@ public class FilterImage {
 
         /**
          * Buff is a 2D square of odd size like 3x3, 5x5, 7x7, ...
-         * For simplicity converting it into 1D array.
+         * For simplicity storing it into 1D array.
          */
         int buff[];
         
@@ -141,7 +141,7 @@ public class FilterImage {
 
         /**
          * Buff is a 2D square of odd size like 3x3, 5x5, 7x7, ...
-         * For simplicity converting it into 1D array.
+         * For simplicity storing it into 1D array.
          */
         int buff[];
         
@@ -204,7 +204,7 @@ public class FilterImage {
 
         /**
          * Buff is a 2D square of odd size like 3x3, 5x5, 7x7, ...
-         * For simplicity converting it into 1D array.
+         * For simplicity storing it into 1D array.
          */
         int buff[];
         

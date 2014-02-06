@@ -32,7 +32,7 @@ public class ImageProject {
     public static void test(){
         MyImage iObj = new MyImage();
         
-        iObj.readImage("D:\\AirBalloon.jpg");
+        iObj.readImage("D:\\lena.jpg");
         System.out.println("Dimension: "+iObj.getImageWidth()+"x"+iObj.getImageHeight());
         System.out.println("Total Pixels: "+iObj.getImageTotalPixels());
         iObj.initPixelArray();
@@ -40,9 +40,11 @@ public class ImageProject {
         //ImageFX.grayScale(iObj);
         //DYCanvas.colorMix(iObj);
         //DYCanvas.colorMix3(iObj);
-        //ThresholdImage.grayscale_Simple(120, iObj);
+        //ImageFX.grayScale(iObj);
+        ImageFX.edgeDetect(iObj);
+        //ThresholdImage.grayscale_Simple(128, iObj);
         //FilterImage.meanFilter_ZeroFill(iObj, 3);
-        iObj.writeImage("D:\\AirBalloon-edge-detect.jpg", "jpg");
+        iObj.writeImage("D:\\lena-threshold.jpg", "jpg");
     }
     
     public static void testCropImage(){
