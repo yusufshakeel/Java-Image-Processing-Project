@@ -36,7 +36,8 @@ public class MyImage {
     ////////////////////////////////// CONSTRUCTORS ////////////////////////////
     
     /** Default constructor */
-    public MyImage(){}
+    public MyImage(){
+    }
     
     /** 
      * Constructor to create a new image object

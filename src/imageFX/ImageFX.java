@@ -164,6 +164,22 @@ public class ImageFX {
     }
     
     /**
+     * This method will turn color image to gray scale image. It will set the RGB value to
+     * red value of the image pixel.
+     * 
+     * @param img The image pixels to change.
+     */
+    public static void grayScale_setRedValueToAll(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int r = img.getRed(x, y);
+                img.setPixel(x, y, a, r, r, r);
+            }
+        }
+    }
+    
+    /**
      * This method will turn color image to red image.
      * 
      * @param img The image pixels to change.
