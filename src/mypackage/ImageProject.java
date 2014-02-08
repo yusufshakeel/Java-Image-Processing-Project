@@ -27,8 +27,8 @@ public class ImageProject {
         MyImage iobj = new MyImage();
         iobj.readImage("D:\\Taj.jpg");
         iobj.initPixelArray();
-        //FilterImage.medianFilter(iobj, 3);
+        FilterImage.medianFilter(iobj, 3);
         //ImageFX.blur_D9(iobj);
-        iobj.writeImage("D:\\Taj2-rotate.jpg", "jpg");
+        iobj.writeImage("D:\\Taj2-medianFilter.jpg", "jpg");
     }
 }//class ImageProject ends here
