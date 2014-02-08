@@ -28,9 +28,10 @@ public class ImageProject {
         
         iobj.readImage("D:\\Taj.jpg");
         iobj.initPixelArray();
-        ImageFX.createRandomImage(iobj);
+        //ImageFX.createRandomImage(iobj);
+        ImageFX.grayScale(iobj);
         //FilterImage.medianFilter(iobj, 3);
         //ImageFX.blur_D9(iobj);
-        iobj.writeImage("D:\\Taj2-medianFilter.jpg", "jpg");
+        iobj.writeImage("D:\\Taj2-grayscale.jpg", "jpg");
     }
 }//class ImageProject ends here

@@ -294,12 +294,7 @@ public class MyImage {
      * 
      */
     public void setPixel(int x, int y, int alpha, int red, int green, int blue){
-        int p = 0;
-        p = p | blue;
-        p = p | (green << 8);
-        p = p | (red << 16);
-        p = p | (alpha << 24);
-        pixels[x+(y*width)] = p;
+        pixels[x+(y*width)] = (alpha<<24) | (red<<16) | (green<<8) | blue;
         updateImagePixelAt(x,y);
     }
     
