@@ -28,7 +28,7 @@ public class ImageProject {
         iobj.readImage("D:\\Taj.jpg");
         iobj.initPixelArray();
         //FilterImage.medianFilter(iobj, 3);
-        ImageFX.grayScale_setRedValueToAll(iobj);
-        iobj.writeImage("D:\\Taj-grayscale.jpg", "jpg");
+        //ImageFX.blur_D9(iobj);
+        iobj.writeImage("D:\\Taj2-rotate.jpg", "jpg");
     }
 }//class ImageProject ends here

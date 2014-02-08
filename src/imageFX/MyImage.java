@@ -36,8 +36,7 @@ public class MyImage {
     ////////////////////////////////// CONSTRUCTORS ////////////////////////////
     
     /** Default constructor */
-    public MyImage(){
-    }
+    public MyImage(){}
     
     /** 
      * Constructor to create a new image object
@@ -51,6 +50,18 @@ public class MyImage {
         this.height = height;
         this.totalPixels = this.width * this.height;
         image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_ARGB);
+    }
+    
+    /** 
+     * Constructor to create a copy of a previously created image object.
+     * 
+     * @param img The image object whose copy is created.
+     */
+    public MyImage(MyImage img){
+        this.width = img.getImageWidth();
+        this.height = img.getImageHeight();
+        this.totalPixels = this.width * this.height;
+        this.image = img.image;
     }
     
     
@@ -314,21 +325,5 @@ public class MyImage {
      */
     public void updateImagePixelAt(int x, int y){
         image.setRGB(x, y, pixels[x+(y*width)]);
-    }
-    
-    /**
-     * This method will create a random image.
-     * 
-     */
-    public void createRandomImage(){
-        for(int y = 0; y < height; y++){
-            for(int x = 0; x < width; x++){
-                int a = (int)(Math.random()*256);
-                int r = (int)(Math.random()*256);
-                int g = (int)(Math.random()*256);
-                int b = (int)(Math.random()*256);
-                setPixel(x,y,a,r,g,b);
-            }
-        }
     }
 }//class ImageFX ends here

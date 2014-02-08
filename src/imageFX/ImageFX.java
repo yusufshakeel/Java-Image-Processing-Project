@@ -66,6 +66,23 @@ public class ImageFX {
     }
     
     /**
+     * This method will create a random image.
+     * 
+     * @param img The image object that will hold the random image.
+     */
+    public static void createRandomImage(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = (int)(Math.random()*256);
+                int r = (int)(Math.random()*256);
+                int g = (int)(Math.random()*256);
+                int b = (int)(Math.random()*256);
+                img.setPixel(x, y, a, r, g, b);
+            }
+        }
+    }
+    
+    /**
      * This method will generate the negative of an image.
      * 
      * @param img The image whose negative is generated.
@@ -147,6 +164,7 @@ public class ImageFX {
     
     /**
      * This method will turn color image to gray scale image.
+     * It will set the RGB value of the pixel to (R+G+B)/3
      * 
      * @param img The image pixels to change.
      */
@@ -164,17 +182,49 @@ public class ImageFX {
     }
     
     /**
-     * This method will turn color image to gray scale image. It will set the RGB value to
-     * red value of the image pixel.
+     * This method will turn color image to gray scale image.
+     * It will set the RGB value of the pixel to red value of the pixel.
      * 
      * @param img The image pixels to change.
      */
-    public static void grayScale_setRedValueToAll(MyImage img){
+    public static void grayScale_setRGBValueToRedValue(MyImage img){
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
                 int a = img.getAlpha(x, y);
                 int r = img.getRed(x, y);
                 img.setPixel(x, y, a, r, r, r);
+            }
+        }
+    }
+    
+    /**
+     * This method will turn color image to gray scale image.
+     * It will set the RGB value of the pixel to green value of the pixel.
+     * 
+     * @param img The image pixels to change.
+     */
+    public static void grayScale_setRGBValueToGreenValue(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int g = img.getGreen(x, y);
+                img.setPixel(x, y, a, g, g, g);
+            }
+        }
+    }
+    
+    /**
+     * This method will turn color image to gray scale image.
+     * It will set the RGB value of the pixel to blue value of the pixel.
+     * 
+     * @param img The image pixels to change.
+     */
+    public static void grayScale_setRGBValueToBlueValue(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int b = img.getBlue(x, y);
+                img.setPixel(x, y, a, b, b, b);
             }
         }
     }
@@ -464,7 +514,6 @@ public class ImageFX {
             }
         }
     }
-    
     
     /**
      * This method will detect edges in the image
