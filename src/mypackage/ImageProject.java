@@ -12,22 +12,24 @@ package mypackage;
  */
 
 import imageFX.*;
-import java.io.IOException;
+//import java.io.IOException;
 
 public class ImageProject {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)throws IOException {
+    public static void main(String[] args){//throws IOException {
         test();
     }//main() ends here
     
     public static void test(){
-        MyImage iobj = new MyImage();
+        MyImage iobj = new MyImage(100,200);
+        
         iobj.readImage("D:\\Taj.jpg");
         iobj.initPixelArray();
-        FilterImage.medianFilter(iobj, 3);
+        ImageFX.createRandomImage(iobj);
+        //FilterImage.medianFilter(iobj, 3);
         //ImageFX.blur_D9(iobj);
         iobj.writeImage("D:\\Taj2-medianFilter.jpg", "jpg");
     }
