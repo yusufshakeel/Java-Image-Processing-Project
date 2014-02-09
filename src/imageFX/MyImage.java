@@ -90,7 +90,6 @@ public class MyImage {
      * Write the content of the BufferedImage object 'image' to a file
      * 
      * @param filePath complete file path of the output image file to be created
-     * @param fileType file type of the output file
      * 
      * Example outputFilePath = "D:\\Output.jpg"
      * Example outputFileType = "jpg|png|bmp|gif"
