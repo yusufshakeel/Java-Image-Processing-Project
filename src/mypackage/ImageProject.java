@@ -24,11 +24,15 @@ public class ImageProject {
     }//main() ends here
     
     public static void test(){
-        MyImage iobj = new MyImage(100,200);
+        MyImage iobj = new MyImage();
         
         iobj.readImage("D:\\Taj.jpg");
         iobj.initPixelArray();
+        //ImageFX.rotateRight(iobj);
+        //ImageFX.rotateLeft(iobj);
         //ImageFX.createRandomImage(iobj);
+        //ImageFX.grayScale(iobj);
+        //ImageFX.crop(iobj, 0, 0, 200, 200);
         ImageFX.grayScale(iobj);
         //FilterImage.medianFilter(iobj, 3);
         //ImageFX.blur_D9(iobj);
