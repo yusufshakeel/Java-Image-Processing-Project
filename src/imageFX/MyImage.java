@@ -89,17 +89,18 @@ public class MyImage {
     /**
      * Write the content of the BufferedImage object 'image' to a file
      * 
-     * @param outputFilePath complete file path of the output image file to be created
-     * @param outputFileType file type of the output file
+     * @param filePath complete file path of the output image file to be created
+     * @param fileType file type of the output file
      * 
      * Example outputFilePath = "D:\\Output.jpg"
      * Example outputFileType = "jpg|png|bmp|gif"
      * 
      */
-    public void writeImage(String outputFilePath, String outputFileType){
+    public void writeImage(String filePath){
         try{
-            File f = new File(outputFilePath);
-            ImageIO.write(image, outputFileType, f);
+            File f = new File(filePath);
+            String fileType = filePath.substring(filePath.lastIndexOf('.')+1);
+            ImageIO.write(image, fileType, f);
         }catch(IOException e){
             System.out.println("Error Occurred!\n"+e);
         }

@@ -32,6 +32,6 @@ public class ImageProject {
         ImageFX.grayScale(iobj);
         //FilterImage.medianFilter(iobj, 3);
         //ImageFX.blur_D9(iobj);
-        iobj.writeImage("D:\\Taj2-grayscale.jpg", "jpg");
+        iobj.writeImage("D:\\Taj2-grayscale.jpg");
     }
 }//class ImageProject ends here
