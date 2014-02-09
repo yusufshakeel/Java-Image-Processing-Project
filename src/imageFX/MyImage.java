@@ -15,6 +15,7 @@ package imageFX;
 import java.io.File;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
 
 public class MyImage {
@@ -33,6 +34,13 @@ public class MyImage {
     /** Total number of pixel in an image*/
     private int totalPixels;
     
+    /** 
+     * Image type example: jpg|png 
+     * JPG does not support alpha (transparency is lost) while PNG supports alpha.
+     */
+    private enum FileType{JPG, PNG}
+    private FileType imageType;
+    
     ////////////////////////////////// CONSTRUCTORS ////////////////////////////
     
     /** Default constructor */
@@ -43,13 +51,13 @@ public class MyImage {
      * 
      * @param width width of the image passed by the user
      * @param height height of the image passed by the user
-     * 
      */
     public MyImage(int width, int height){
         this.width = width;
         this.height = height;
         this.totalPixels = this.width * this.height;
         image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_ARGB);
+        this.imageType = FileType.PNG;
     }
     
     /** 
@@ -67,17 +75,43 @@ public class MyImage {
     
     /////////////////////////////////////// METHODS ////////////////////////////
     
+    /**
+     * This method will modify the image object.
+     * 
+     * @param width The width of the new image.
+     * @param heigth The height of the new image.
+     * @param bi The new image that will replace the old image.
+     */
+    public void modifyImageObject(int width, int height, BufferedImage bi){
+        this.width = width;
+        this.height = height;
+        this.totalPixels = this.width * this.height;
+        if(this.imageType == FileType.PNG){
+            this.image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        }else{
+            this.image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        }
+        Graphics2D g2d = this.image.createGraphics();
+        g2d.drawImage(bi, 0, 0, null);
+        g2d.dispose();
+    }
+    
     /** 
      * Read the image using the image file path passed
      * 
      * @param filePath the path of the image file
      * Example filePath = "D:\\LogoJava.jpg"
-     * 
      */
     public void readImage(String filePath){
         try{
             File f = new File(filePath);
             image = ImageIO.read(f);
+            String fileType = filePath.substring(filePath.lastIndexOf('.')+1);
+            if("jpg".equals(fileType)){
+                imageType = FileType.JPG;
+            }else{
+                imageType = FileType.PNG;
+            }
             this.width = image.getWidth();
             this.height = image.getHeight();
             this.totalPixels = this.width * this.height;
@@ -90,10 +124,7 @@ public class MyImage {
      * Write the content of the BufferedImage object 'image' to a file
      * 
      * @param filePath complete file path of the output image file to be created
-     * 
-     * Example outputFilePath = "D:\\Output.jpg"
-     * Example outputFileType = "jpg|png|bmp|gif"
-     * 
+     * Example filePath = "D:\\Output.jpg"
      */
     public void writeImage(String filePath){
         try{
@@ -102,6 +133,27 @@ public class MyImage {
             ImageIO.write(image, fileType, f);
         }catch(IOException e){
             System.out.println("Error Occurred!\n"+e);
+        }
+    }
+    
+    /**
+     * Initialize the pixel array
+     * Image origin is at coordinate (0,0)
+     * (0,0)--------> X-axis
+     *     |
+     *     |
+     *     |
+     *     v
+     *   Y-axis
+     * 
+     * This method will store the value of each pixels of a 2D image in a 1D array.
+     */
+    public void initPixelArray(){
+        pixels = new int[totalPixels];
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                pixels[x+(y*width)] = image.getRGB(x, y);
+            }
         }
     }
     
@@ -130,28 +182,6 @@ public class MyImage {
      */
     public int getImageTotalPixels(){
         return totalPixels;
-    }
-    
-    /**
-     * Initialize the pixel array
-     * Image origin is at coordinate (0,0)
-     * (0,0)--------> X-axis
-     *     |
-     *     |
-     *     |
-     *     v
-     *   Y-axis
-     * 
-     * This method will store the value of each pixels of a 2D image in a 1D array.
-     * 
-     */
-    public void initPixelArray(){
-        pixels = new int[totalPixels];
-        for(int y = 0; y < height; y++){
-            for(int x = 0; x < width; x++){
-                pixels[x+(y*width)] = image.getRGB(x, y);
-            }
-        }
     }
     
     /**
@@ -216,7 +246,6 @@ public class MyImage {
      * @param x the x coordinate of the pixel
      * @param y the y coordinate of the pixel
      * @return the pixel value in integer [Value can be negative and positive.]
-     * 
      */
     public int getPixel(int x, int y){
         return pixels[x+(y*width)];
@@ -291,7 +320,6 @@ public class MyImage {
      * @param red the red value to set [value from 0-255]
      * @param green the green value to set [value from 0-255]
      * @param blue the blue value to set  [value from 0-255]
-     * 
      */
     public void setPixel(int x, int y, int alpha, int red, int green, int blue){
         pixels[x+(y*width)] = (alpha<<24) | (red<<16) | (green<<8) | blue;
@@ -304,7 +332,6 @@ public class MyImage {
      * @param x the x coordinate of the pixel
      * @param y the y coordinate of the pixel
      * @param pixelValue the pixel value to set
-     * 
      */
     public void setPixelToValue(int x, int y, int pixelValue){
         pixels[x+(y*width)] = pixelValue;
@@ -316,7 +343,6 @@ public class MyImage {
      * 
      * @param x the x coordinate of the pixel that is set
      * @param y the y coordinate of the pixel that is set
-     * 
      */
     public void updateImagePixelAt(int x, int y){
         image.setRGB(x, y, pixels[x+(y*width)]);
