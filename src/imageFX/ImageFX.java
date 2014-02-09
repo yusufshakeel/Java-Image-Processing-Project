@@ -10,6 +10,8 @@ package imageFX;
  * @version 1.0
  * Date: 26-01-2014 sun
  */
+import java.awt.image.BufferedImage;
+
 public class ImageFX {
     
     /**
@@ -80,6 +82,58 @@ public class ImageFX {
                 img.setPixel(x, y, a, r, g, b);
             }
         }
+    }
+    
+    /**
+     * This method will crop the image img.
+     * 
+     * @param img The image to crop.
+     * @param x The x coordinate from where cropping will start.
+     * @param y The y coordinate from where cropping will start.
+     * @param width The width of the new cropped image.
+     * @param height The height of the new cropped image.
+     */
+    public static void crop(MyImage img, int x, int y, int width, int height){
+        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        for(int sy = y, j = 0; sy < y+height; sy++, j++){
+            for(int sx = x, i = 0; sx < x+width; sx++, i++){
+                bi.setRGB(i, j, img.getPixel(sx, sy));
+            }
+        }
+        img.modifyImageObject(width, height, bi);
+        img.initPixelArray();
+    }
+    
+    /**
+     * This method will rotate the image left.
+     * 
+     * @param img The image to rotate.
+     */
+    public static void rotateLeft(MyImage img){
+        BufferedImage bi = new BufferedImage(img.getImageHeight(), img.getImageWidth(), BufferedImage.TYPE_INT_ARGB);
+        for(int sx = img.getImageWidth()-1, y = 0; sx >= 0; sx--, y++){
+            for(int sy = 0, x = 0; sy < img.getImageHeight(); sy++, x++){
+                bi.setRGB(x, y, img.getPixel(sx, sy));
+            }
+        }
+        img.modifyImageObject(img.getImageHeight(), img.getImageWidth(), bi);
+        img.initPixelArray();
+    }
+    
+    /**
+     * This method will rotate the image right.
+     * 
+     * @param img The image to rotate.
+     */
+    public static void rotateRight(MyImage img){
+        BufferedImage bi = new BufferedImage(img.getImageHeight(), img.getImageWidth(), BufferedImage.TYPE_INT_ARGB);
+        for(int sx = 0, y = 0; sx < img.getImageWidth(); sx++, y++){
+            for(int sy = img.getImageHeight()-1 , x = 0; sy >= 0; sy--, x++){
+                bi.setRGB(x, y, img.getPixel(sx, sy));
+            }
+        }
+        img.modifyImageObject(img.getImageHeight(), img.getImageWidth(), bi);
+        img.initPixelArray();
     }
     
     /**
