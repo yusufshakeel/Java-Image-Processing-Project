@@ -33,6 +33,7 @@ public class ImageProject {
         //ImageFX.createRandomImage(iobj);
         //ImageFX.grayScale(iobj);
         //ImageFX.crop(iobj, 0, 0, 200, 200);
+        //ImageFX.grayScale(iobj);
         ImageFX.grayScale(iobj);
         //FilterImage.medianFilter(iobj, 3);
         //ImageFX.blur_D9(iobj);
