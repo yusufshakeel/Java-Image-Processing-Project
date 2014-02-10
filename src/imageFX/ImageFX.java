@@ -14,6 +14,8 @@ import java.awt.image.BufferedImage;
 
 public class ImageFX {
     
+    /////////////////////////// Pixel elements ARGB Methods ////////////////////
+    
     /**
      * This method will return alpha value from the pixel value.
      * 
@@ -67,42 +69,7 @@ public class ImageFX {
         return (a<<24) | (r<<16) | (g<<8) | b;
     }
     
-    /**
-     * This method will create a random image.
-     * 
-     * @param img The image object that will hold the random image.
-     */
-    public static void createRandomImage(MyImage img){
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
-                int a = (int)(Math.random()*256);
-                int r = (int)(Math.random()*256);
-                int g = (int)(Math.random()*256);
-                int b = (int)(Math.random()*256);
-                img.setPixel(x, y, a, r, g, b);
-            }
-        }
-    }
-    
-    /**
-     * This method will crop the image img.
-     * 
-     * @param img The image to crop.
-     * @param x The x coordinate from where cropping will start.
-     * @param y The y coordinate from where cropping will start.
-     * @param width The width of the new cropped image.
-     * @param height The height of the new cropped image.
-     */
-    public static void crop(MyImage img, int x, int y, int width, int height){
-        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        for(int sy = y, j = 0; sy < y+height; sy++, j++){
-            for(int sx = x, i = 0; sx < x+width; sx++, i++){
-                bi.setRGB(i, j, img.getPixel(sx, sy));
-            }
-        }
-        img.modifyImageObject(width, height, bi);
-        img.initPixelArray();
-    }
+    //////////////////////////// Rotation and Flip Methods /////////////////////
     
     /**
      * This method will rotate the image left.
@@ -137,23 +104,6 @@ public class ImageFX {
     }
     
     /**
-     * This method will generate the negative of an image.
-     * 
-     * @param img The image whose negative is generated.
-     */
-    public static void negative(MyImage img){
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
-                int a = img.getAlpha(x, y);
-                int r = 255 - img.getRed(x, y);
-                int g = 255 - img.getGreen(x, y);
-                int b = 255 - img.getBlue(x, y);
-                img.setPixel(x, y, a, r, g, b);
-            }
-        }
-    }
-    
-    /**
      * This method will flip the image horizontally.
      * 
      * @param img The image to be flipped horizontally.
@@ -182,6 +132,8 @@ public class ImageFX {
             }
         }
     }
+    
+    /////////////////////////////// Transparency Methods ///////////////////////
     
     /**
      * This method will change the transparency (alpha) of all the pixels of the image.
@@ -216,24 +168,7 @@ public class ImageFX {
         }
     }
     
-    /**
-     * This method will turn color image to gray scale image.
-     * This method uses the formula GrayScale = 0.2126*R + 0.7152*G + 0.0722*B
-     * 
-     * @param img The image pixels to change.
-     */
-    public static void grayScale(MyImage img){
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
-                int a = img.getAlpha(x, y);
-                int r = img.getRed(x, y);
-                int g = img.getGreen(x, y);
-                int b = img.getBlue(x, y);
-                int grayscale = (int)(0.2126*r + 0.7152*g + 0.0722*b);
-                img.setPixel(x, y, a, grayscale, grayscale, grayscale);
-            }
-        }
-    }
+    ////////////////////////////// Grayscale Methods ///////////////////////////
     
     /**
      * This method will turn color image to gray scale image.
@@ -241,7 +176,7 @@ public class ImageFX {
      * 
      * @param img The image pixels to change.
      */
-    public static void grayScale_AverageOfRGB(MyImage img){
+    public static void grayScale_Average(MyImage img){
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
                 int a = img.getAlpha(x, y);
@@ -249,6 +184,46 @@ public class ImageFX {
                 int g = img.getGreen(x, y);
                 int b = img.getBlue(x, y);
                 int grayscale = (r+g+b)/3;
+                img.setPixel(x, y, a, grayscale, grayscale, grayscale);
+            }
+        }
+    }
+    
+    /**
+     * This method will turn color image to gray scale image.
+     * In this method GrayScale = (max(R, G, B) + min(R, G, B)) / 2.
+     *
+     * @param img The image pixels to change.
+     */
+    public static void grayScale_Lightness(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int r = img.getRed(x, y);
+                int g = img.getGreen(x, y);
+                int b = img.getBlue(x, y);
+                int max = Math.max(Math.max(r, g), b);
+                int min = Math.min(Math.min(r, g), b);
+                int grayscale = (max+min)/2;
+                img.setPixel(x, y, a, grayscale, grayscale, grayscale);
+            }
+        }
+    }
+    
+    /**
+     * This method will turn color image to gray scale image.
+     * This method uses the formula GrayScale = 0.2126*R + 0.7152*G + 0.0722*B
+     * 
+     * @param img The image pixels to change.
+     */
+    public static void grayScale_Luminosity(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int r = img.getRed(x, y);
+                int g = img.getGreen(x, y);
+                int b = img.getBlue(x, y);
+                int grayscale = (int)(0.2126*r + 0.7152*g + 0.0722*b);
                 img.setPixel(x, y, a, grayscale, grayscale, grayscale);
             }
         }
@@ -301,6 +276,62 @@ public class ImageFX {
             }
         }
     }
+
+    //////////////////////////////// Image Methods /////////////////////////////
+    
+    /**
+     * This method will create a random image.
+     * 
+     * @param img The image object that will hold the random image.
+     */
+    public static void createRandomImage(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = (int)(Math.random()*256);
+                int r = (int)(Math.random()*256);
+                int g = (int)(Math.random()*256);
+                int b = (int)(Math.random()*256);
+                img.setPixel(x, y, a, r, g, b);
+            }
+        }
+    }
+    
+    /**
+     * This method will crop the image img.
+     * 
+     * @param img The image to crop.
+     * @param x The x coordinate from where cropping will start.
+     * @param y The y coordinate from where cropping will start.
+     * @param width The width of the new cropped image.
+     * @param height The height of the new cropped image.
+     */
+    public static void crop(MyImage img, int x, int y, int width, int height){
+        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        for(int sy = y, j = 0; sy < y+height; sy++, j++){
+            for(int sx = x, i = 0; sx < x+width; sx++, i++){
+                bi.setRGB(i, j, img.getPixel(sx, sy));
+            }
+        }
+        img.modifyImageObject(width, height, bi);
+        img.initPixelArray();
+    }
+    
+    /**
+     * This method will generate the negative of an image.
+     * 
+     * @param img The image whose negative is generated.
+     */
+    public static void negative(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int r = 255 - img.getRed(x, y);
+                int g = 255 - img.getGreen(x, y);
+                int b = 255 - img.getBlue(x, y);
+                img.setPixel(x, y, a, r, g, b);
+            }
+        }
+    }
     
     /**
      * This method will turn color image to red image.
@@ -346,6 +377,8 @@ public class ImageFX {
             }
         }
     }
+    
+    ////////////////////////////////// SHARPEN METHOD //////////////////////////
     
     /**
      * This method will sharpen the image.
@@ -427,6 +460,8 @@ public class ImageFX {
             }
         }
     }
+    
+    /////////////////////////////// BLUR METHODS ///////////////////////////////
     
     /**
      * This method will blur the image using 
@@ -587,6 +622,8 @@ public class ImageFX {
             }
         }
     }
+    
+    //////////////////////////////// EDGE DETECT METHOD ////////////////////////
     
     /**
      * This method will detect edges in the image
