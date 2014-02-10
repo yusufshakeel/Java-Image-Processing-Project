@@ -28,15 +28,7 @@ public class ImageProject {
         
         iobj.readImage("D:\\Taj.jpg");
         iobj.initPixelArray();
-        //ImageFX.rotateRight(iobj);
-        //ImageFX.rotateLeft(iobj);
-        //ImageFX.createRandomImage(iobj);
-        //ImageFX.grayScale(iobj);
-        //ImageFX.crop(iobj, 0, 0, 200, 200);
-        //ImageFX.grayScale(iobj);
         ImageFX.grayScale_Luminosity(iobj);
-        //FilterImage.medianFilter(iobj, 3);
-        //ImageFX.blur_D9(iobj);
         iobj.writeImage("D:\\Taj2-grayscale.jpg");
     }
 }//class ImageProject ends here
