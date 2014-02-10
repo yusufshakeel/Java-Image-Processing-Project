@@ -15,6 +15,7 @@ package imageFX;
 import java.io.File;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
+import java.awt.image.PixelGrabber;
 import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
 
@@ -56,6 +57,7 @@ public class MyImage {
         this.width = width;
         this.height = height;
         this.totalPixels = this.width * this.height;
+        this.pixels = new int[this.totalPixels];
         image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_ARGB);
         this.imageType = FileType.PNG;
     }
@@ -69,7 +71,9 @@ public class MyImage {
         this.width = img.getImageWidth();
         this.height = img.getImageHeight();
         this.totalPixels = this.width * this.height;
+        this.pixels = new int[this.totalPixels];
         this.image = img.image;
+        this.imageType = img.imageType;
     }
     
     
@@ -86,6 +90,7 @@ public class MyImage {
         this.width = width;
         this.height = height;
         this.totalPixels = this.width * this.height;
+        this.pixels = new int[this.totalPixels];
         if(this.imageType == FileType.PNG){
             this.image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         }else{
@@ -115,6 +120,7 @@ public class MyImage {
             this.width = image.getWidth();
             this.height = image.getHeight();
             this.totalPixels = this.width * this.height;
+            this.pixels = new int[this.totalPixels];
         }catch(IOException e){
             System.out.println("Error Occurred!\n"+e);
         }
@@ -149,11 +155,11 @@ public class MyImage {
      * This method will store the value of each pixels of a 2D image in a 1D array.
      */
     public void initPixelArray(){
-        pixels = new int[totalPixels];
-        for(int y = 0; y < height; y++){
-            for(int x = 0; x < width; x++){
-                pixels[x+(y*width)] = image.getRGB(x, y);
-            }
+        PixelGrabber pg = new PixelGrabber(this.image, 0, 0, this.width, this.height, this.pixels, 0, this.width);
+        try{
+            pg.grabPixels();
+        }catch(InterruptedException e){
+            System.out.println("Error Occurred: "+e);
         }
     }
     
