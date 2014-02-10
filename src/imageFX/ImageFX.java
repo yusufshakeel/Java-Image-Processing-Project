@@ -218,11 +218,30 @@ public class ImageFX {
     
     /**
      * This method will turn color image to gray scale image.
-     * It will set the RGB value of the pixel to (R+G+B)/3
+     * This method uses the formula GrayScale = 0.2126*R + 0.7152*G + 0.0722*B
      * 
      * @param img The image pixels to change.
      */
     public static void grayScale(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int r = img.getRed(x, y);
+                int g = img.getGreen(x, y);
+                int b = img.getBlue(x, y);
+                int grayscale = (int)(0.2126*r + 0.7152*g + 0.0722*b);
+                img.setPixel(x, y, a, grayscale, grayscale, grayscale);
+            }
+        }
+    }
+    
+    /**
+     * This method will turn color image to gray scale image.
+     * It will set the RGB value of the pixel to (R+G+B)/3
+     * 
+     * @param img The image pixels to change.
+     */
+    public static void grayScale_AverageOfRGB(MyImage img){
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
                 int a = img.getAlpha(x, y);
