@@ -66,7 +66,79 @@ public class FilterImage {
     
     /**
      * This method is used to perform median filtering on the image object passed.
-     * This method will fill the pixels outside the mask with 0 value.
+     * 
+     * @param img The image object passed on which median filtering is performed.
+     * @param maskSize - The size of the mask is an odd integer like 3, 5, 7 … etc.
+     */
+    public static void medianFilter_RGB(MyImage img, int maskSize){
+        
+        /** 
+         * This array will store the output of the median filter operation which will
+         * be later written back to the original image pixels.
+         */
+        int outputPixels[] = new int[img.getImageTotalPixels()];
+
+        /**
+         * red, green and blue are a 2D square of odd size like 3x3, 5x5, 7x7, ...
+         * For simplicity storing it into 1D array.
+         */
+        int red[], green[], blue[];
+        
+        /** Median Filter operation */
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                red = new int[maskSize * maskSize];
+                green = new int [maskSize * maskSize];
+                blue = new int [maskSize * maskSize];
+                int count = 0;
+                for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
+                    for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
+                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                            /** Some portion of the mask is outside the image. */
+                            continue;
+                        }else{
+                            red[count] = img.getRed(c, r);
+                            green[count] = img.getGreen(c, r);
+                            blue[count] = img.getBlue(c, r);
+                            count++;
+                        }
+                    }
+                }
+                
+                /** sort red, green, blue array */
+                java.util.Arrays.sort(red);
+                java.util.Arrays.sort(green);
+                java.util.Arrays.sort(blue);
+                
+                /** save median value in outputPixels array */
+                int p = ImageFX.getPixelValueFromARGBValue(255, red[count/2], green[count/2], blue[count/2]);
+                outputPixels[x+(y*img.getImageWidth())] = p;
+            }
+        }
+        /** Write the output pixels to the image pixels */
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageWidth())]);
+            }
+        }
+    }
+    
+    /**
+     * This method is used to perform median filtering on the image object passed.
+     * This method will fill the cells of the mask not over the pixels of the image with 0.
+     * 
+     * Mask 3x3
+     *  |
+     *  V         Image Pixels 3x5
+     * +-+-+-+    |
+     * |0|0|0|    V
+     * +-+-+-+-+-+-+
+     * |0|1|2|3|2|1|
+     * +-+-+-+-+-+-+
+     * |0|4|5|6|5|4|
+     * +-+-+-+-+-+-+
+     *   |7|8|9|8|7|
+     *   +-+-+-+-+-+
      * 
      * @param img The image object passed on which median filtering is performed.
      * @param maskSize - The size of the mask is an odd integer like 3, 5, 7 … etc.
@@ -115,7 +187,21 @@ public class FilterImage {
     
     /**
      * This method is used to perform median filtering on the image object passed.
-     * This method fill the pixels outside the mask with values near to the pixels.
+     * This method will fill the cells of the mask not over the pixels of the image
+     * with the value of the pixels near to the cell.
+     *
+     * Mask 3x3
+     *  |
+     *  V         Image Pixels 3x5
+     * +-+-+-+    |
+     * |1|1|2|    V
+     * +-+-+-+-+-+-+
+     * |1|1|2|3|2|1|
+     * +-+-+-+-+-+-+
+     * |4|4|5|6|5|4|
+     * +-+-+-+-+-+-+
+     *   |7|8|9|8|7|
+     *   +-+-+-+-+-+
      * 
      * @param img The image object passed on which median filtering is performed.
      * @param maskSize - The size of the mask is an odd integer like 3, 5, 7 … etc.
@@ -179,6 +265,19 @@ public class FilterImage {
      * pixels under the mask. Note! details from the image is also removed in this
      * process. Hence bigger the mask size more the detail lost.
      * This method will fill the pixels outside the mask with 0 value.
+     *
+     * Mask 3x3
+     *  |
+     *  V         Image Pixels 3x5
+     * +-+-+-+    |
+     * |0|0|0|    V
+     * +-+-+-+-+-+-+
+     * |0|1|2|3|2|1|
+     * +-+-+-+-+-+-+
+     * |0|4|5|6|5|4|
+     * +-+-+-+-+-+-+
+     *   |7|8|9|8|7|
+     *   +-+-+-+-+-+
      * 
      * @param img The image object passed on which median filtering is performed.
      * @param maskSize - The size of the mask is an odd integer like 3, 5, 7 … etc.
@@ -242,6 +341,19 @@ public class FilterImage {
      * pixels under the mask. Note! details from the image is also removed in this
      * process. Hence bigger the mask size more the detail lost.
      * This method fill the pixels outside the mask with values near to the pixels.
+     *
+     * Mask 3x3
+     *  |
+     *  V         Image Pixels 3x5
+     * +-+-+-+    |
+     * |1|1|2|    V
+     * +-+-+-+-+-+-+
+     * |1|1|2|3|2|1|
+     * +-+-+-+-+-+-+
+     * |4|4|5|6|5|4|
+     * +-+-+-+-+-+-+
+     *   |7|8|9|8|7|
+     *   +-+-+-+-+-+
      * 
      * @param img The image object passed on which median filtering is performed.
      * @param maskSize - The size of the mask is an odd integer like 3, 5, 7 … etc.
