@@ -26,10 +26,13 @@ public class ImageProject {
     public static void test(){
         MyImage iobj = new MyImage();
         
-        iobj.readImage("D:\\Taj.jpg");
+        iobj.readImage("D:\\NoiseImage2.jpg");
         iobj.initPixelArray();
+        FilterImage.medianFilter_RGB(iobj, 3);
         //ImageFX.grayScale_Luminosity(iobj);
-        ImageFX.greenImage(iobj);
-        iobj.writeImage("D:\\Taj2-grayscale.jpg");
+        //ImageFX.greenImage(iobj);
+        //ThresholdImage.threshold_AverageOfRGBValue(iobj, 136);
+        //ThresholdImage.autoThreshold_usingBlueValueOfPixels(iobj);
+        iobj.writeImage("D:\\Taj2-threshold.jpg");
     }
 }//class ImageProject ends here
