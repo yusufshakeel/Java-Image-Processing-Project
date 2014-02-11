@@ -378,6 +378,57 @@ public class ImageFX {
         }
     }
     
+    /**
+     * This method will change the red value of the image.
+     * 
+     * @param img The image pixels to change.
+     * @param red The red value to set. [0-255]
+     */
+    public static void changeImageRedValue(MyImage img, int red){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int g = img.getGreen(x, y);
+                int b = img.getBlue(x, y);
+                img.setPixel(x, y, a, red, g, b);
+            }
+        }
+    }
+    
+    /**
+     * This method will change the green value of the image.
+     * 
+     * @param img The image pixels to change.
+     * @param green The green value to set. [0-255]
+     */
+    public static void changeImageGreenValue(MyImage img, int green){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int r = img.getRed(x, y);
+                int b = img.getBlue(x, y);
+                img.setPixel(x, y, a, r, green, b);
+            }
+        }
+    }
+    
+    /**
+     * This method will change the blue value of the image.
+     * 
+     * @param img The image pixels to change.
+     * @param blue The blue value to set. [0-255]
+     */
+    public static void changeImageBlueValue(MyImage img, int blue){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int r = img.getRed(x, y);
+                int g = img.getGreen(x, y);
+                img.setPixel(x, y, a, r, g, blue);
+            }
+        }
+    }
+    
     ////////////////////////////////// SHARPEN METHOD //////////////////////////
     
     /**
