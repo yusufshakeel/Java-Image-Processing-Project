@@ -28,7 +28,8 @@ public class ImageProject {
         
         iobj.readImage("D:\\Taj.jpg");
         iobj.initPixelArray();
-        ImageFX.grayScale_Luminosity(iobj);
+        //ImageFX.grayScale_Luminosity(iobj);
+        ImageFX.greenImage(iobj);
         iobj.writeImage("D:\\Taj2-grayscale.jpg");
     }
 }//class ImageProject ends here
