@@ -28,11 +28,11 @@ public class ImageProject {
         
         iobj.readImage("D:\\NoiseImage2.jpg");
         iobj.initPixelArray();
-        ImageFX.grayScale_Luminosity(iobj);
+        //ImageFX.grayScale_Luminosity(iobj);
         FilterImage.medianFilter_RGB(iobj, 3);
         //ImageFX.greenImage(iobj);
         //ThresholdImage.threshold_AverageOfRGBValue(iobj, 136);
-        ThresholdImage.autoThreshold_usingBlueValueOfPixels(iobj);
+        //ThresholdImage.autoThreshold_usingBlueValueOfPixels(iobj);
         iobj.writeImage("D:\\Taj2-threshold.jpg");
     }
 }//class ImageProject ends here
