@@ -1,7 +1,7 @@
 package mypackage;
 
 /**
- * File: Test.java
+ * File: Test_RGB_HSI.java
  * 
  * Description:
  * This is a test file.
