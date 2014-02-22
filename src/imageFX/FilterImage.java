@@ -4,7 +4,7 @@ package imageFX;
  * File: FilterImage.java
  * 
  * Description:
- * This will perform median filtering.
+ * This file contains different filtering methods.
  * 
  * @author Yusuf Shakeel
  * @version 1.0
@@ -421,4 +421,4 @@ public class FilterImage {
             }
         }
     }
-}//class MedianFilter ends here
+}//class FilterImage ends here
