@@ -29,7 +29,7 @@ public class MyImage {
     /** Store the image width and height */
     private int width, height;
     
-    /** Pixel values */
+    /** Pixels value - ARGB */
     private int pixels[];
     
     /** Total number of pixel in an image*/
