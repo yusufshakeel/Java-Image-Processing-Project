@@ -69,6 +69,53 @@ public class ImageFX {
         return (a<<24) | (r<<16) | (g<<8) | b;
     }
     
+    ///////////////////////////// HSI methods //////////////////////////////////
+    
+    /**
+     * This method will change the hue value of the image.
+     * This method is using HSI (Hue-Saturation-Intensity) color model.
+     * 
+     * @param img The image pixels to change.
+     * @param hue The hue value to set in degree [0-360]
+     */
+    public static void HSI_changeImageHueValue(MyImage img, double hue){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                img.setHue_HSI(x, y, hue);
+            }
+        }
+    }
+    
+    /**
+     * This method will change the saturation value of the image.
+     * This method is using HSI (Hue-Saturation-Intensity) color model.
+     * 
+     * @param img The image pixels to change.
+     * @param saturation The saturation value [0-1]
+     */
+    public static void HSI_changeImageSaturationValue(MyImage img, double saturation){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                img.setSaturation_HSI(x, y, saturation);
+            }
+        }
+    }
+    
+    /**
+     * This method will change the intensity value of the image.
+     * This method is using HSI (Hue-Saturation-Intensity) color model.
+     * 
+     * @param img The image pixels to change.
+     * @param intensity The intensity value [0-255]
+     */
+    public static void HSI_changeImageIntensityValue(MyImage img, double intensity){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                img.setIntensity_HSI(x, y, intensity);
+            }
+        }
+    }
+    
     //////////////////////////// Rotation and Flip Methods /////////////////////
     
     /**
