@@ -4,8 +4,8 @@ package imageFX;
  * File: MyImage.java
  * 
  * Description:
- * This is used to create an BufferedImage object and comes with different methods
- * to work with the image.
+ * MyImage class is used to create BufferedImage objects and comes with different methods
+ * to work with the image object.
  * 
  * @author Yusuf Shakeel
  * @version 1.0
@@ -155,6 +155,10 @@ public class MyImage {
      * This method will store the value of each pixels of a 2D image in a 1D array.
      */
     public void initPixelArray(){
+        
+        /**
+         * storing the ARGB value of each pixels in the pixels array.
+         */
         PixelGrabber pg = new PixelGrabber(this.image, 0, 0, this.width, this.height, this.pixels, 0, this.width);
         try{
             pg.grabPixels();
@@ -318,7 +322,7 @@ public class MyImage {
     }
     
     /**
-     * This method will set the value of the pixel of the image at the coordinate (x,y) to ARGB value.
+     * This method will set pixel(x,y) to ARGB value.
      * 
      * @param x the x coordinate of the pixel
      * @param y the y coordinate of the pixel
@@ -333,7 +337,7 @@ public class MyImage {
     }
     
     /**
-     * This method will set the value of the pixel of the image at the coordinate (x,y) to value.
+     * This method will set pixel (x,y) to pixelValue.
      * 
      * @param x the x coordinate of the pixel
      * @param y the y coordinate of the pixel
@@ -350,7 +354,143 @@ public class MyImage {
      * @param x the x coordinate of the pixel that is set
      * @param y the y coordinate of the pixel that is set
      */
-    public void updateImagePixelAt(int x, int y){
+    private void updateImagePixelAt(int x, int y){
         image.setRGB(x, y, pixels[x+(y*width)]);
+    }
+    
+    ////////////////////////////// HSI Methods /////////////////////////////////
+    
+    /**
+     * This method will return the hue of the pixel (x,y) as per HSI color model.
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @return H The hue value of the pixel [0-360] in degree.
+     */
+    public double getHue_HSI(int x, int y){
+        int r = getRed(x,y);
+        int g = getGreen(x,y);
+        int b = getBlue(x,y);
+        
+        double H = Math.toDegrees(Math.acos((r - (0.5*g) - (0.5*b))/Math.sqrt((r*r)+(g*g)+(b*b)-(r*g)-(g*b)-(b*r))));
+        H = (b>g)?360-H:H;
+        
+        return H;
+    }
+    
+    /**
+     * This method will return the saturation of the pixel (x,y) as per HSI color model.
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @return S The saturation of the pixel [0-1].
+     */
+    public double getSaturation_HSI(int x, int y){
+        int r = getRed(x,y);
+        int g = getGreen(x,y);
+        int b = getBlue(x,y);
+        double I = (r+g+b)/3;
+        
+        int m = Math.min(Math.min(r,g),b);
+        double S = (I>0)?1 - m/I:0;
+        
+        return S;
+    }
+    
+    /**
+     * This method will return the intensity of the pixel (x,y) as per HSI color model.
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @return I The saturation of the pixel [0-255].
+     */
+    public double getIntensity_HSI(int x, int y){
+        int r = getRed(x,y);
+        int g = getGreen(x,y);
+        int b = getBlue(x,y);
+        double I = (r+g+b)/3;
+        
+        return I;
+    }
+    
+    /**
+     * This method will set the hue value of the pixel (x,y).
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @param hue The hue value that is set.
+     */
+    public void setHue_HSI(int x, int y, double hue){
+        int rgb[] = getRGBFromHSI(hue, getSaturation_HSI(x,y), getIntensity_HSI(x,y));
+        setPixel(x, y, getAlpha(x,y), rgb[0], rgb[1], rgb[2]);
+    }
+    
+    /**
+     * This method will set the saturation value of the pixel (x,y).
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @param saturation The saturation value that is set.
+     */
+    public void setSaturation_HSI(int x, int y, double saturation){
+        int rgb[] = getRGBFromHSI(getHue_HSI(x,y), saturation, getIntensity_HSI(x,y));
+        setPixel(x, y, getAlpha(x,y), rgb[0], rgb[1], rgb[2]);
+    }
+    
+    /**
+     * This method will set the intensity value of the pixel (x,y).
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @param intensity The intensity value that is set.
+     */
+    public void setIntensity_HSI(int x, int y, double intensity){
+        int rgb[] = getRGBFromHSI(getHue_HSI(x,y), getSaturation_HSI(x,y), intensity);
+        setPixel(x, y, getAlpha(x,y), rgb[0], rgb[1], rgb[2]);
+    }
+    
+    /**
+     * This method will return the RGB value from HSI value.
+     * 
+     * @param H Hue value.
+     * @param S Saturation value.
+     * @param I Intensity value.
+     * @return The rgb value for the corresponding HSI value.
+     */
+    private int[] getRGBFromHSI(double H, double S, double I){
+        int rgb[] = new int[3];
+        int r = 0, g = 0, b = 0;
+        
+        if(H == 0){
+            r = (int)Math.round(I + 2*I*S);
+            g = (int)Math.round(I - I*S);
+            b = (int)Math.round(I - I*S);
+        }else if(H < 120){
+            r = (int)Math.round(I + I*S*(Math.cos(Math.toRadians(H))/Math.cos(Math.toRadians(60-H))));
+            g = (int)Math.round(I + I*S*(1 - Math.cos(Math.toRadians(H))/Math.cos(Math.toRadians(60-H))));
+            b = (int)Math.round(I - I*S);
+        }else if(H == 120){
+            r = (int)Math.round(I - I*S);
+            g = (int)Math.round(I + 2*I*S);
+            b = (int)Math.round(I - I*S);
+        }else if(H < 240){
+            r = (int)Math.round(I - I*S);
+            g = (int)Math.round(I + I*S*(Math.cos(Math.toRadians(H-120))/Math.cos(Math.toRadians(180-H))));
+            b = (int)Math.round(I + I*S*(1 - (Math.cos(Math.toRadians(H-120))/Math.cos(Math.toRadians(180-H)))));
+        }else if(H == 240){
+            r = (int)Math.round(I - I*S);
+            g = (int)Math.round(I - I*S);
+            b = (int)Math.round(I + 2*I*S);
+        }else if(H < 360){
+            r = (int)Math.round(I + I*S*(1 - Math.cos(Math.toRadians(H-240))/Math.cos(Math.toRadians(300-H))));
+            g = (int)Math.round(I - I*S);
+            b = (int)Math.round(I + I*S*(Math.cos(Math.toRadians(H-240))/Math.cos(Math.toRadians(300-H))));
+        }
+        
+        rgb[0]=r;
+        rgb[1]=g;
+        rgb[2]=b;
+        
+        return rgb;
     }
 }//class ImageFX ends here
