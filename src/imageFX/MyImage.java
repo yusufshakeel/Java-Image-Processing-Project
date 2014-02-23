@@ -10,8 +10,29 @@ package imageFX;
  * @author Yusuf Shakeel
  * @version 1.0
  * date: 26-01-2014 sun
+ * 
+ * www.github.com/yusufshakeel/Java-Image-Processing-Project
+ * 
+ * The MIT License (MIT)
+ * Copyright (c) 2014 Yusuf Shakeel
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
 import java.io.File;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
@@ -358,7 +379,7 @@ public class MyImage {
         image.setRGB(x, y, pixels[x+(y*width)]);
     }
     
-    ////////////////////////////// HSI Methods /////////////////////////////////
+    //////////////////////////////  HSI color model Methods ////////////////////
     
     /**
      * This method will return the hue of the pixel (x,y) as per HSI color model.
@@ -367,7 +388,7 @@ public class MyImage {
      * @param y The y coordinate of the pixel.
      * @return H The hue value of the pixel [0-360] in degree.
      */
-    public double getHue_HSI(int x, int y){
+    public double HSI_getHue(int x, int y){
         int r = getRed(x,y);
         int g = getGreen(x,y);
         int b = getBlue(x,y);
@@ -385,7 +406,7 @@ public class MyImage {
      * @param y The y coordinate of the pixel.
      * @return S The saturation of the pixel [0-1].
      */
-    public double getSaturation_HSI(int x, int y){
+    public double HSI_getSaturation(int x, int y){
         int r = getRed(x,y);
         int g = getGreen(x,y);
         int b = getBlue(x,y);
@@ -402,9 +423,9 @@ public class MyImage {
      * 
      * @param x The x coordinate of the pixel.
      * @param y The y coordinate of the pixel.
-     * @return I The saturation of the pixel [0-255].
+     * @return I The intensity of the pixel [0-255].
      */
-    public double getIntensity_HSI(int x, int y){
+    public double HSI_getIntensity(int x, int y){
         int r = getRed(x,y);
         int g = getGreen(x,y);
         int b = getBlue(x,y);
@@ -418,10 +439,10 @@ public class MyImage {
      * 
      * @param x The x coordinate of the pixel.
      * @param y The y coordinate of the pixel.
-     * @param hue The hue value that is set.
+     * @param hue The hue value that is set [0-360] in degree.
      */
-    public void setHue_HSI(int x, int y, double hue){
-        int rgb[] = getRGBFromHSI(hue, getSaturation_HSI(x,y), getIntensity_HSI(x,y));
+    public void HSI_setHue(int x, int y, double hue){
+        int rgb[] = HSI_getRGBFromHSI(hue, HSI_getSaturation(x,y), HSI_getIntensity(x,y));
         setPixel(x, y, getAlpha(x,y), rgb[0], rgb[1], rgb[2]);
     }
     
@@ -430,10 +451,10 @@ public class MyImage {
      * 
      * @param x The x coordinate of the pixel.
      * @param y The y coordinate of the pixel.
-     * @param saturation The saturation value that is set.
+     * @param saturation The saturation value that is set [0-1].
      */
-    public void setSaturation_HSI(int x, int y, double saturation){
-        int rgb[] = getRGBFromHSI(getHue_HSI(x,y), saturation, getIntensity_HSI(x,y));
+    public void HSI_setSaturation(int x, int y, double saturation){
+        int rgb[] = HSI_getRGBFromHSI(HSI_getHue(x,y), saturation, HSI_getIntensity(x,y));
         setPixel(x, y, getAlpha(x,y), rgb[0], rgb[1], rgb[2]);
     }
     
@@ -442,10 +463,10 @@ public class MyImage {
      * 
      * @param x The x coordinate of the pixel.
      * @param y The y coordinate of the pixel.
-     * @param intensity The intensity value that is set.
+     * @param intensity The intensity value that is set [0-255].
      */
-    public void setIntensity_HSI(int x, int y, double intensity){
-        int rgb[] = getRGBFromHSI(getHue_HSI(x,y), getSaturation_HSI(x,y), intensity);
+    public void HSI_setIntensity(int x, int y, double intensity){
+        int rgb[] = HSI_getRGBFromHSI(HSI_getHue(x,y), HSI_getSaturation(x,y), intensity);
         setPixel(x, y, getAlpha(x,y), rgb[0], rgb[1], rgb[2]);
     }
     
@@ -457,7 +478,7 @@ public class MyImage {
      * @param I Intensity value.
      * @return The rgb value for the corresponding HSI value.
      */
-    private int[] getRGBFromHSI(double H, double S, double I){
+    private int[] HSI_getRGBFromHSI(double H, double S, double I){
         int rgb[] = new int[3];
         int r = 0, g = 0, b = 0;
         
@@ -485,6 +506,299 @@ public class MyImage {
             r = (int)Math.round(I + I*S*(1 - Math.cos(Math.toRadians(H-240))/Math.cos(Math.toRadians(300-H))));
             g = (int)Math.round(I - I*S);
             b = (int)Math.round(I + I*S*(Math.cos(Math.toRadians(H-240))/Math.cos(Math.toRadians(300-H))));
+        }
+        
+        rgb[0]=r;
+        rgb[1]=g;
+        rgb[2]=b;
+        
+        return rgb;
+    }
+    
+    ////////////////////////////// HSV color model Methods /////////////////////
+    
+    /**
+     * This method will return the hue of the pixel (x,y) as per HSV color model.
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @return H The hue value of the pixel [0-360] in degree.
+     */
+    public double HSV_getHue(int x, int y){
+        int r = getRed(x,y);
+        int g = getGreen(x,y);
+        int b = getBlue(x,y);
+        
+        double H = Math.toDegrees(Math.acos((r - (0.5*g) - (0.5*b))/Math.sqrt((r*r)+(g*g)+(b*b)-(r*g)-(g*b)-(b*r))));
+        H = (b>g)?360-H:H;
+        
+        return H;
+    }
+    
+    /**
+     * This method will return the saturation of the pixel (x,y) as per HSV color model.
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @return S The saturation of the pixel [0-1].
+     */
+    public double HSV_getSaturation(int x, int y){
+        int r = getRed(x,y);
+        int g = getGreen(x,y);
+        int b = getBlue(x,y);
+        
+        int max = Math.max(Math.max(r, g), b);
+        int min = Math.min(Math.min(r, g), b);
+        
+        double S = (max>0)?(1 - (double)min/max):0;
+        
+        return S;
+    }
+    
+    /**
+     * This method will return the value of the pixel (x,y) as per HSV color model.
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @return V The value of the pixel [0-1].
+     */
+    public double HSV_getValue(int x, int y){
+        int r = getRed(x,y);
+        int g = getGreen(x,y);
+        int b = getBlue(x,y);
+        
+        int max = Math.max(Math.max(r, g), b);
+        double V = max/255.0;
+        
+        return V;
+    }
+    
+    /**
+     * This method will set the hue of the pixel (x,y).
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @param hue The hue value that is set [0-360] in degree.
+     */
+    public void HSV_setHue(int x, int y, double hue){
+        int rgb[] = HSV_getRGBFromHSV(hue, HSV_getSaturation(x,y), HSV_getValue(x,y));
+        setPixel(x, y, getAlpha(x,y), rgb[0], rgb[1], rgb[2]);
+    }
+    
+    /**
+     * This method will set the saturation of the pixel (x,y).
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @param saturation The saturation value that is set [0-1].
+     */
+    public void HSV_setSaturation(int x, int y, double saturation){
+        int rgb[] = HSV_getRGBFromHSV(HSV_getHue(x,y), saturation, HSV_getValue(x,y));
+        setPixel(x, y, getAlpha(x,y), rgb[0], rgb[1], rgb[2]);
+    }
+    
+    /**
+     * This method will set the value of the pixel (x,y).
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @param value The value that is set [0-1].
+     */
+    public void HSV_setValue(int x, int y, double value){
+        int rgb[] = HSV_getRGBFromHSV(HSV_getHue(x,y), HSV_getSaturation(x,y), value);
+        setPixel(x, y, getAlpha(x,y), rgb[0], rgb[1], rgb[2]);
+    }
+    
+    /**
+     * This method will return the RGB value from HSV value.
+     * 
+     * @param H Hue of the pixel.
+     * @param S Saturation of the pixel.
+     * @param V Value of the pixel.
+     * @return The rgb value for the corresponding HSV value.
+     */
+    private int[] HSV_getRGBFromHSV(double H, double S, double V){
+        int rgb[] = new int[3];
+        int r = 0, g = 0, b = 0;
+        
+        double max = 255.0*V;
+        double min = max*(1-S);
+        double tmp = (max-min)*(1 - Math.abs((H/60)%2 - 1));
+        
+        H %= 360;
+        
+        if(H < 60){
+            r = (int)Math.round(max);
+            g = (int)Math.round(tmp+min);
+            b = (int)Math.round(min);
+        }else if(H < 120){
+            r = (int)Math.round(tmp+min);
+            g = (int)Math.round(max);
+            b = (int)Math.round(min);
+        }else if(H < 180){
+            r = (int)Math.round(min);
+            g = (int)Math.round(max);
+            b = (int)Math.round(tmp+min);
+        }else if(H < 240){
+            r = (int)Math.round(min);
+            g = (int)Math.round(tmp+min);
+            b = (int)Math.round(max);
+        }else if(H < 300){
+            r = (int)Math.round(tmp+min);
+            g = (int)Math.round(min);
+            b = (int)Math.round(max);
+        }else if(H < 360){
+            r = (int)Math.round(max);
+            g = (int)Math.round(min);
+            b = (int)Math.round(tmp+min);
+        }
+        
+        rgb[0]=r;
+        rgb[1]=g;
+        rgb[2]=b;
+        
+        return rgb;
+    }
+    
+    ////////////////////////////// HSL color model Methods /////////////////////
+    
+    /**
+     * This method will return the hue of the pixel (x,y) as per HSL color model.
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @return H The hue value of the pixel [0-360] in degree.
+     */
+    public double HSL_getHue(int x, int y){
+        int r = getRed(x,y);
+        int g = getGreen(x,y);
+        int b = getBlue(x,y);
+        
+        double H = Math.toDegrees(Math.acos((r - (0.5*g) - (0.5*b))/Math.sqrt((r*r)+(g*g)+(b*b)-(r*g)-(g*b)-(b*r))));
+        H = (b>g)?360-H:H;
+        
+        return H;
+    }
+    
+    /**
+     * This method will return the saturation of the pixel (x,y) as per HSL color model.
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @return S The saturation of the pixel [0-1].
+     */
+    public double HSL_getSaturation(int x, int y){
+        int r = getRed(x,y);
+        int g = getGreen(x,y);
+        int b = getBlue(x,y);
+        
+        int max = Math.max(Math.max(r, g), b);
+        int min = Math.min(Math.min(r, g), b);
+        double tmp = (max-min)/255.0;
+        double L = (max+min)/510.0;
+        
+        double S = (L>0)?tmp/(1.0 - Math.abs(2*L - 1.0)):0;
+        
+        return S;
+    }
+    
+    /**
+     * This method will return the lightness of the pixel (x,y) as per HSL color model.
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @return L The lightness of the pixel [0-1].
+     */
+    public double HSL_getLightness(int x, int y){
+        int r = getRed(x,y);
+        int g = getGreen(x,y);
+        int b = getBlue(x,y);
+        
+        int max = Math.max(Math.max(r, g), b);
+        int min = Math.min(Math.min(r, g), b);
+        double L = (max+min)/510.0;
+        
+        return L;
+    }
+    
+    /**
+     * This method will set the hue of the pixel (x,y).
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @param hue The hue value that is set [0-360] in degree.
+     */
+    public void HSL_setHue(int x, int y, double hue){
+        int rgb[] = HSL_getRGBFromHSL(hue, HSL_getSaturation(x,y), HSL_getLightness(x,y));
+        setPixel(x, y, getAlpha(x,y), rgb[0], rgb[1], rgb[2]);
+    }
+    
+    /**
+     * This method will set the saturation of the pixel (x,y).
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @param saturation The saturation value that is set [0-1].
+     */
+    public void HSL_setSaturation(int x, int y, double saturation){
+        int rgb[] = HSL_getRGBFromHSL(HSL_getHue(x,y), saturation, HSL_getLightness(x,y));
+        setPixel(x, y, getAlpha(x,y), rgb[0], rgb[1], rgb[2]);
+    }
+    
+    /**
+     * This method will set the lightness of the pixel (x,y).
+     * 
+     * @param x The x coordinate of the pixel.
+     * @param y The y coordinate of the pixel.
+     * @param lightness The lightness value that is set [0-1].
+     */
+    public void HSL_setLightness(int x, int y, double lightness){
+        int rgb[] = HSL_getRGBFromHSL(HSL_getHue(x,y), HSL_getSaturation(x,y), lightness);
+        setPixel(x, y, getAlpha(x,y), rgb[0], rgb[1], rgb[2]);
+    }
+    
+    /**
+     * This method will return the RGB value from HSL value.
+     * 
+     * @param H Hue of the pixel.
+     * @param S Saturation of the pixel.
+     * @param L Lightness of the pixel.
+     * @return The rgb value for the corresponding HSL value.
+     */
+    private int[] HSL_getRGBFromHSL(double H, double S, double L){
+        int rgb[] = new int[3];
+        int r = 0, g = 0, b = 0;
+        
+        double tmp = S*(1.0 - Math.abs(2*L - 1.0));
+        double min = 255.0*(L - 0.5*tmp);
+        double tmp2 = tmp*(1.0 - Math.abs((H/60)%2 - 1));
+        
+        H %= 360;
+        
+        if(H < 60){
+            r = (int)Math.round(255*tmp+min);
+            g = (int)Math.round(255*tmp2+min);
+            b = (int)Math.round(min);
+        }else if(H < 120){
+            r = (int)Math.round(255*tmp2+min);
+            g = (int)Math.round(255*tmp+min);
+            b = (int)Math.round(min);
+        }else if(H < 180){
+            r = (int)Math.round(min);
+            g = (int)Math.round(255*tmp+min);
+            b = (int)Math.round(255*tmp2+min);
+        }else if(H < 240){
+            r = (int)Math.round(min);
+            g = (int)Math.round(255*tmp2+min);
+            b = (int)Math.round(255*tmp+min);
+        }else if(H < 300){
+            r = (int)Math.round(255*tmp2+min);
+            g = (int)Math.round(min);
+            b = (int)Math.round(255*tmp+min);
+        }else if(H < 360){
+            r = (int)Math.round(255*tmp+min);
+            g = (int)Math.round(min);
+            b = (int)Math.round(255*tmp2+min);
         }
         
         rgb[0]=r;
