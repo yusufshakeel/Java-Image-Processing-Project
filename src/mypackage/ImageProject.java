@@ -27,7 +27,7 @@ public class ImageProject {
         MyImage iobj = new MyImage();
         iobj.readImage("D:\\Taj.jpg");
         iobj.initPixelArray();
-        ThresholdImage.autoThreshold(iobj);
-        iobj.writeImage("D:\\Taj2-autothreshold.jpg");
+        ImageFX.pixelation(iobj, 20);
+        iobj.writeImage("D:\\Taj2-pixelation.jpg");
     }
 }//class ImageProject ends here
