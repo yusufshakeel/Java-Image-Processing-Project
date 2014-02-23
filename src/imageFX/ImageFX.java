@@ -9,6 +9,28 @@ package imageFX;
  * @author Yusuf Shakeel
  * @version 1.0
  * Date: 26-01-2014 sun
+ * 
+ * www.github.com/yusufshakeel/Java-Image-Processing-Project
+ * 
+ * The MIT License (MIT)
+ * Copyright (c) 2014 Yusuf Shakeel
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 import java.awt.image.BufferedImage;
 
@@ -69,7 +91,7 @@ public class ImageFX {
         return (a<<24) | (r<<16) | (g<<8) | b;
     }
     
-    ///////////////////////////// HSI methods //////////////////////////////////
+    ///////////////////////////// HSI color model methods //////////////////////
     
     /**
      * This method will change the hue value of the image.
@@ -78,10 +100,10 @@ public class ImageFX {
      * @param img The image pixels to change.
      * @param hue The hue value to set in degree [0-360]
      */
-    public static void HSI_changeImageHueValue(MyImage img, double hue){
+    public static void HSI_changeImageHue(MyImage img, double hue){
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
-                img.setHue_HSI(x, y, hue);
+                img.HSI_setHue(x, y, hue);
             }
         }
     }
@@ -93,10 +115,10 @@ public class ImageFX {
      * @param img The image pixels to change.
      * @param saturation The saturation value [0-1]
      */
-    public static void HSI_changeImageSaturationValue(MyImage img, double saturation){
+    public static void HSI_changeImageSaturation(MyImage img, double saturation){
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
-                img.setSaturation_HSI(x, y, saturation);
+                img.HSI_setSaturation(x, y, saturation);
             }
         }
     }
@@ -108,10 +130,104 @@ public class ImageFX {
      * @param img The image pixels to change.
      * @param intensity The intensity value [0-255]
      */
-    public static void HSI_changeImageIntensityValue(MyImage img, double intensity){
+    public static void HSI_changeImageIntensity(MyImage img, double intensity){
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
-                img.setIntensity_HSI(x, y, intensity);
+                img.HSI_setIntensity(x, y, intensity);
+            }
+        }
+    }
+    
+    ///////////////////////////// HSV color model methods //////////////////////
+    
+    /**
+     * This method will change the hue of the image.
+     * This method is using HSV (Hue-Saturation-Value) color model.
+     * 
+     * @param img The image pixels to change.
+     * @param hue The hue value to set in degree [0-360]
+     */
+    public static void HSV_changeImageHue(MyImage img, double hue){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                img.HSV_setHue(x, y, hue);
+            }
+        }
+    }
+    
+    /**
+     * This method will change the saturation of the image.
+     * This method is using HSV (Hue-Saturation-Value) color model.
+     * 
+     * @param img The image pixels to change.
+     * @param saturation The saturation value [0-1]
+     */
+    public static void HSV_changeImageSaturation(MyImage img, double saturation){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                img.HSV_setSaturation(x, y, saturation);
+            }
+        }
+    }
+    
+    /**
+     * This method will change the value of the image.
+     * This method is using HSV (Hue-Saturation-Value) color model.
+     * 
+     * @param img The image pixels to change.
+     * @param value The value [0-1]
+     */
+    public static void HSV_changeImageValue(MyImage img, double value){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                img.HSV_setValue(x, y, value);
+            }
+        }
+    }
+    
+    ///////////////////////////// HSL color model methods //////////////////////
+    
+    /**
+     * This method will change the hue of the image.
+     * This method is using HSL (Hue-Saturation-Lightness) color model.
+     * 
+     * @param img The image pixels to change.
+     * @param hue The hue value to set in degree [0-360]
+     */
+    public static void HSL_changeImageHue(MyImage img, double hue){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                img.HSL_setHue(x, y, hue);
+            }
+        }
+    }
+    
+    /**
+     * This method will change the saturation of the image.
+     * This method is using HSL (Hue-Saturation-Lightness) color model.
+     * 
+     * @param img The image pixels to change.
+     * @param saturation The saturation value [0-1]
+     */
+    public static void HSL_changeImageSaturation(MyImage img, double saturation){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                img.HSL_setSaturation(x, y, saturation);
+            }
+        }
+    }
+    
+    /**
+     * This method will change the value of the image.
+     * This method is using HSL (Hue-Saturation-Lightness) color model.
+     * 
+     * @param img The image pixels to change.
+     * @param lightness The lightness [0-1]
+     */
+    public static void HSL_changeImageLightness(MyImage img, double lightness){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                img.HSL_setLightness(x, y, lightness);
             }
         }
     }
