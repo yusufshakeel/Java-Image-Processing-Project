@@ -97,7 +97,6 @@ public class MyImage {
         this.imageType = img.imageType;
     }
     
-    
     /////////////////////////////////////// METHODS ////////////////////////////
     
     /**
