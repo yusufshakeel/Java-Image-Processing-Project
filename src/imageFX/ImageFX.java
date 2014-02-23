@@ -497,6 +497,66 @@ public class ImageFX {
     }
     
     /**
+     * This method will create sepia tone.
+     * 
+     * @param img The image pixels to change.
+     */
+    public static void sepiaTone(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int r = img.getRed(x, y);
+                int g = img.getGreen(x, y);
+                int b = img.getBlue(x, y);
+                
+                int tr = (int)(0.393*r + 0.769*g + 0.189*b);
+                int tg = (int)(0.349*r + 0.686*g + 0.168*b);
+                int tb = (int)(0.272*r + 0.534*g + 0.131*b);
+                
+                r = (r>255)?255:tr;
+                g = (g>255)?255:tg;
+                b = (g>255)?255:tb;
+                
+                img.setPixel(x, y, a, r, g, b);
+            }
+        }
+    }
+    
+    /**
+     * This method will pixelate the image.
+     * 
+     * @param img The image that is pixelated.
+     * @param maskSize The size of the mask used to perform pixelation. Mask will be in square shape.
+     */
+    public static void pixelation(MyImage img, int maskSize){
+        for(int y = 0; y < img.getImageHeight(); y += maskSize){
+            for(int x = 0; x < img.getImageWidth(); x += maskSize){
+                int rgb[] = new int[3], count = 0;
+                
+                for(int yi = 0; yi < maskSize && y+yi < img.getImageHeight(); yi++){
+                    for(int xi = 0; xi < maskSize && x+xi < img.getImageWidth(); xi++){
+                        rgb[0] += img.getRed(x+xi, y+yi);
+                        rgb[1] += img.getGreen(x+xi, y+yi);
+                        rgb[2] += img.getBlue(x+xi, y+yi);
+                        count++;
+                    }
+                }
+                
+                int avg[] = new int[3];
+                avg[0] = rgb[0]/count;
+                avg[1] = rgb[1]/count;
+                avg[2] = rgb[2]/count;
+                
+                for(int yi = 0; yi < maskSize && y+yi < img.getImageHeight(); yi++){
+                    for(int xi = 0; xi < maskSize && x+xi < img.getImageWidth(); xi++){
+                        img.setPixel(x+xi, y+yi, 255, avg[0], avg[1], avg[2]);
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
      * This method will turn color image to red image.
      * 
      * @param img The image pixels to change.
