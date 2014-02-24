@@ -46,7 +46,7 @@ public class DYMosaic {
                 int c;
                 if(lim>0){
                     c = (int)(Math.random()*lim);
-                    c = ((int)(Math.random()*2)==0)?c:-1*c;
+                    c = ((int)(Math.random()*2))==0?c:-1*c;
                 }else{
                     lim = buff;
                     c = -1*(int)(Math.random()*lim);
