@@ -24,9 +24,11 @@ public class ImageProject {
     }//main() ends here
     
     public static void test(){
-        MyImage iobj = new MyImage();
-        iobj.readImage("D:\\Taj.jpg");
-        ImageFX.crop(iobj, 0, 0, 300, 400);
-        iobj.writeImage("D:\\Taj2-sepia.jpg");
+        MyImage iobj = new MyImage(500,500);
+        DYMosaic.color_Raspberry_pink(iobj, 25);
+        //iobj.readImage("D:\\Taj.jpg");
+        //ImageFX.crop(iobj, 0, 0, 300, 400);
+        //ImageFX.createRandomImage(iobj);
+        iobj.writeImage("D:\\Taj2-sepia.png");
     }
 }//class ImageProject ends here
