@@ -513,9 +513,9 @@ public class ImageFX {
                 int tg = (int)(0.349*r + 0.686*g + 0.168*b);
                 int tb = (int)(0.272*r + 0.534*g + 0.131*b);
                 
-                r = (r>255)?255:tr;
-                g = (g>255)?255:tg;
-                b = (g>255)?255:tb;
+                r = (tr>255)?255:tr;
+                g = (tg>255)?255:tg;
+                b = (tb>255)?255:tb;
                 
                 img.setPixel(x, y, a, r, g, b);
             }
