@@ -12,21 +12,21 @@ package mypackage;
  */
 
 import imageFX.*;
+//import java.io.IOException;
 
 public class ImageProject {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args){
+    public static void main(String[] args){//throws IOException {
         test();
     }//main() ends here
     
     public static void test(){
         MyImage iobj = new MyImage();
         iobj.readImage("D:\\Taj.jpg");
-        iobj.initPixelArray();
-        ImageFX.pixelation(iobj, 20);
-        iobj.writeImage("D:\\Taj2-pixelation.jpg");
+        ImageFX.crop(iobj, 0, 0, 300, 400);
+        iobj.writeImage("D:\\Taj2-sepia.jpg");
     }
 }//class ImageProject ends here
