@@ -247,7 +247,6 @@ public class ImageFX {
             }
         }
         img.modifyImageObject(img.getImageHeight(), img.getImageWidth(), bi);
-        img.initPixelArray();
     }
     
     /**
@@ -263,7 +262,6 @@ public class ImageFX {
             }
         }
         img.modifyImageObject(img.getImageHeight(), img.getImageWidth(), bi);
-        img.initPixelArray();
     }
     
     /**
@@ -476,7 +474,6 @@ public class ImageFX {
             }
         }
         img.modifyImageObject(width, height, bi);
-        img.initPixelArray();
     }
     
     /**
