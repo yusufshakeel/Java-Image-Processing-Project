@@ -81,6 +81,7 @@ public class MyImage {
         this.pixels = new int[this.totalPixels];
         image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_ARGB);
         this.imageType = FileType.PNG;
+        initPixelArray();
     }
     
     /** 
@@ -95,6 +96,7 @@ public class MyImage {
         this.pixels = new int[this.totalPixels];
         this.image = img.image;
         this.imageType = img.imageType;
+        initPixelArray();
     }
     
     /////////////////////////////////////// METHODS ////////////////////////////
@@ -119,6 +121,7 @@ public class MyImage {
         Graphics2D g2d = this.image.createGraphics();
         g2d.drawImage(bi, 0, 0, null);
         g2d.dispose();
+        initPixelArray();
     }
     
     /** 
@@ -141,6 +144,7 @@ public class MyImage {
             this.height = image.getHeight();
             this.totalPixels = this.width * this.height;
             this.pixels = new int[this.totalPixels];
+            initPixelArray();
         }catch(IOException e){
             System.out.println("Error Occurred!\n"+e);
         }
@@ -174,12 +178,8 @@ public class MyImage {
      * 
      * This method will store the value of each pixels of a 2D image in a 1D array.
      */
-    public void initPixelArray(){
-        
-        /**
-         * storing the ARGB value of each pixels in the pixels array.
-         */
-        PixelGrabber pg = new PixelGrabber(this.image, 0, 0, this.width, this.height, this.pixels, 0, this.width);
+    private void initPixelArray(){
+        PixelGrabber pg = new PixelGrabber(image, 0, 0, width, height, pixels, 0, width);
         try{
             pg.grabPixels();
         }catch(InterruptedException e){
