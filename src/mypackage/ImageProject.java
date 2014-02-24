@@ -12,14 +12,13 @@ package mypackage;
  */
 
 import imageFX.*;
-//import java.io.IOException;
 
 public class ImageProject {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args){//throws IOException {
+    public static void main(String[] args){
         test();
     }//main() ends here
     
