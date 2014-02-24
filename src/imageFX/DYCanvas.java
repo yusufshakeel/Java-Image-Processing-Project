@@ -34,6 +34,8 @@ package imageFX;
  */
 public class DYCanvas {
     
+    ///////////////////////////////// COLOR MIX methods ////////////////////////
+    
     /**
      * This method will generate an image of different shade out of the entered image.
      * 
