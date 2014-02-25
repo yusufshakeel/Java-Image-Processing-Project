@@ -24,10 +24,12 @@ public class ImageProject {
     }//main() ends here
     
     public static void test(){
-        MyImage iobj = new MyImage(5000,3000);
+        MyImage iobj = new MyImage(500,500);
+        DYMosaic.color_Red_orange(iobj, 25);
         //iobj.readImage("D:\\Taj.jpg");
+        //ImageFX.HSI_changeImageHue(iobj, 0);
         //ImageFX.crop(iobj, 0, 0, 300, 400);
         //ImageFX.createRandomImage(iobj);
-        iobj.writeImage("D:\\Taj2-sepia1.png");
+        iobj.writeImage("D:\\Taj2-hsi.png");
     }
 }//class ImageProject ends here
