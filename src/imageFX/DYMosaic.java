@@ -72,7 +72,7 @@ public class DYMosaic {
      * @param img The image object.
      * @param pieceSize The piece size. [Mosaic pieces will be in square shape]
      */
-    public static void Random(MyImage img, int pieceSize){
+    public static void _random(MyImage img, int pieceSize){
         int r = (int)(Math.random()*256);
         int g = (int)(Math.random()*256);
         int b = (int)(Math.random()*256);
