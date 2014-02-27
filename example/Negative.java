@@ -8,7 +8,6 @@
  * Date: 27-01-2014 mon
  *
  * www.github.com/yusufshakeel/Java-Image-Processing-Project
- *
  */
 
 import java.io.File;
