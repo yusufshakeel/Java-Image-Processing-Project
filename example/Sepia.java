@@ -1,6 +1,6 @@
 /**
  * File: Sepia.java
- * 
+ *
  * Description:
  * Convert color image to sepia image.
  *
