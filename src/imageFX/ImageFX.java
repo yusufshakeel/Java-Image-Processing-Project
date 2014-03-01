@@ -1,5 +1,4 @@
 package imageFX;
-
 /**
  * File: ImageFX.java
  * 
@@ -92,6 +91,23 @@ public class ImageFX {
     }
     
     ///////////////////////////// HSI color model methods //////////////////////
+    
+    /**
+     * This method will replace the RGB value of each pixel with the HSI value.
+     * 
+     * @param img The image whose HSI image is created.
+     */
+    public static void HSI_createHSIImage(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int h = (int)(img.HSI_getHue(x, y)*255/359);
+                int s = (int)(img.HSI_getSaturation(x, y)*255);
+                int i = (int)(img.HSI_getIntensity(x, y)*255);
+                img.setPixel(x, y, a, h, s, i);
+            }
+        }
+    }
     
     /**
      * This method will change the hue value of the image.
