@@ -1,7 +1,7 @@
 Java-Image-Processing-Project
 =============================
 
-Image Processing project
+DY imageFX - Image Processing project
 
 By: Yusuf Shakeel
 
