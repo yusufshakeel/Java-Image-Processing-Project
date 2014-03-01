@@ -1,5 +1,4 @@
 package imageFX;
-
 /**
  * File: FilterImage.java
  * 
