@@ -44,6 +44,20 @@ public class DYColor {
      * By Default Alpha is set to 255 i.e. FF (in HEX).
      * So all color starts with 0xFF.
      */
+    
+    /////////////////////////////// DYColor ////////////////////////////////////
+    public static int DYColor1 = 0xFF786786;
+    public static int DYColor_1to6 = 0xFF123456;
+    public static int DYColor_ABCDEF = 0xFFABCDEF;
+    public static int DYColor_Dawood = 0xFF141295;
+    public static int DYColor_DY = 0xFF044590;
+    public static int DYColor_JB007 = 0xFF007007;
+    public static int DYColor_MAC = 0xFF4D4143;
+    public static int DYColor_Palindrome123 = 0xFF123321;
+    public static int DYColor_PalindromeABC = 0xFFABCCBA;
+    public static int DYColor_Yusuf = 0xFF211090;
+    
+    /////////////////////////////// Color //////////////////////////////////////
     public static int Acid_green = 0xFFA8BB19;
     public static int Aero = 0xFF7CB9E8;
     public static int Aero_blue = 0xFFC9FFE5;
@@ -370,7 +384,6 @@ public class DYColor {
     public static int Duke_blue = 0xFF967117;
     public static int Dust_storm = 0xFF00009C;
     public static int Dutch_white = 0xFFE5CCC9;
-    public static int DYColor1 = 0xFF786786;
     public static int Earth_yellow = 0xFFEFDFBB;
     public static int Ebony = 0xFFE1A95F;
     public static int Ecru = 0xFF555D50;
