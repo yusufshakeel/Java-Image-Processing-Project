@@ -29,6 +29,7 @@ Directories:
 Files:
 
  * src/imageFX/DYCanvas.java - This file contains some random canvas creating method.
+ * src/imageFX/DYColor.java - This file contains hex value of colors.
 
  * src/imageFX/DYMosaic.java - This file contains methods to create mosaic.
 
