@@ -1,5 +1,4 @@
 package mypackage;
-
 /**
  * File: ImageProject.java
  * 
@@ -24,9 +23,8 @@ public class ImageProject {
     }//main() ends here
     
     public static void test(){
-        MyImage iobj = new MyImage(500,500);
-        DYMosaic.color_Red_orange(iobj, 25);
-        //iobj.readImage("D:\\Taj.jpg");
+        MyImage iobj = new MyImage(1200,500);
+        DYMosaic.myColorMosaic(iobj, DYColor.DYColor1, 20);
         //ImageFX.HSI_changeImageHue(iobj, 0);
         //ImageFX.crop(iobj, 0, 0, 300, 400);
         //ImageFX.createRandomImage(iobj);
