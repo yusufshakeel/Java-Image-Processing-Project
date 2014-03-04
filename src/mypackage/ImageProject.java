@@ -23,8 +23,8 @@ public class ImageProject {
     }//main() ends here
     
     public static void test(){
-        MyImage iobj = new MyImage(1200,500);
-        DYMosaic.myColorMosaic(iobj, DYColor.DYColor1, 20);
+        MyImage iobj = new MyImage();
+        iobj.readImage("D:\\Taj.jpg");
         //ImageFX.HSI_changeImageHue(iobj, 0);
         //ImageFX.crop(iobj, 0, 0, 300, 400);
         //ImageFX.createRandomImage(iobj);
