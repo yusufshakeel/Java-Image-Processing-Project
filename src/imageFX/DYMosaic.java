@@ -102,4 +102,18 @@ public class DYMosaic {
     public static void myColorMosaic(MyImage img, int DYColor, int pieceSize){
         _createMosaic(img, DYColor, pieceSize);
     }
+    
+    /**
+     * This method will generate a color mosaic pattern based on the RGB value entered.
+     * 
+     * @param img The image object
+     * @param r The red value [0-255].
+     * @param g The green value [0-255].
+     * @param b The blue value [0-255].
+     * @param pieceSize The piece size. [Mosaic pieces will be in square shape]
+     */
+    public static void myRGBMosaic(MyImage img, int r, int g, int b, int pieceSize){
+        int DYColor = (255<<24) | (r<<16) | (g<<8) | b;
+        _createMosaic(img, DYColor, pieceSize);
+    }
 }//class Mosaic ends here
