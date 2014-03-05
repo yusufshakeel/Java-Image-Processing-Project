@@ -276,7 +276,7 @@ public class DYCanvas {
      * text pixels of the text image with the photo pixels of the photo image that is
      * beneath it.
      * 
-     * @param testImg The image object that holds the text message image.
+     * @param textImg The image object that holds the text message image.
      * @param photoImg The image object that holds the photo image.
      */
     public static void Layer_pictureText(MyImage textImg, MyImage photoImg){
