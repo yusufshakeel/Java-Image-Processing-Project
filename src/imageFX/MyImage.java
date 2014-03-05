@@ -3,7 +3,7 @@ package imageFX;
  * File: MyImage.java
  * 
  * Description:
- * This file contains MyImage class which is used to create BufferedImage objects and comes with different methods to work with the image object.
+ * This file contains MyImage class which is used to create BufferedImage objects.
  * 
  * @author Yusuf Shakeel
  * @version 1.0
