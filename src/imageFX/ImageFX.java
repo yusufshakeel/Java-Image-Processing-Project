@@ -3,7 +3,7 @@ package imageFX;
  * File: ImageFX.java
  * 
  * Description:
- * Contains common image processing methods.
+ * This file contains common image processing methods.
  * 
  * @author Yusuf Shakeel
  * @version 1.0
