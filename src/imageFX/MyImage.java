@@ -3,8 +3,7 @@ package imageFX;
  * File: MyImage.java
  * 
  * Description:
- * MyImage class is used to create BufferedImage objects and comes with different methods
- * to work with the image object.
+ * This file contains MyImage class which is used to create BufferedImage objects and comes with different methods to work with the image object.
  * 
  * @author Yusuf Shakeel
  * @version 1.0
@@ -104,7 +103,7 @@ public class MyImage {
      * This method will modify the image object.
      * 
      * @param width The width of the new image.
-     * @param heigth The height of the new image.
+     * @param height The height of the new image.
      * @param bi The new image that will replace the old image.
      */
     public void modifyImageObject(int width, int height, BufferedImage bi){
