@@ -25,9 +25,6 @@ public class ImageProject {
     public static void test(){
         MyImage iobj = new MyImage();
         iobj.readImage("D:\\Taj.jpg");
-        //ImageFX.HSI_changeImageHue(iobj, 0);
-        //ImageFX.crop(iobj, 0, 0, 300, 400);
-        //ImageFX.createRandomImage(iobj);
         iobj.writeImage("D:\\Taj2-hsi.png");
     }
 }//class ImageProject ends here
