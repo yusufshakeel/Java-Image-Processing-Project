@@ -665,6 +665,29 @@ public class ImageFX {
         }
     }
     
+    ////////////////////////////////// CONTRAST METHOD /////////////////////////
+    /**
+     * This method will contrast the image.
+     * 
+     * @param img The image to sharpen.
+     */
+    public static void contrast(MyImage img){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int a = img.getAlpha(x, y);
+                int r = img.getRed(x, y);
+                int g = img.getGreen(x, y);
+                int b = img.getBlue(x, y);
+                
+                r = (r>128)?(int)(r*1.2):(int)(r/1.2);
+                g = (g>128)?(int)(g*1.2):(int)(g/1.2);
+                b = (b>128)?(int)(b*1.2):(int)(b/1.2);
+                
+                img.setPixel(x, y, a, r, g, b);
+            }
+        }
+    }
+    
     ////////////////////////////////// SHARPEN METHOD //////////////////////////
     
     /**
