@@ -8,6 +8,15 @@ By: Yusuf Shakeel
 Date: 26-Jan-2014 Sunday
 
 
+[facebook.com/yusufshakeel](https://www.facebook.com/yusufshakeel)
+
+[youtube.com/yusufshakeel](https://www.youtube.com/yusufshakeel)
+
+[github.com/yusufshakeel](https://www.github.com/yusufshakeel)
+
+[plus.google.com/+YusufShakeel](https://plus.google.com/+YusufShakeel/posts)
+
+
 Note
 ----
 This project is in development stage so files will get modified quite often.
