@@ -23,7 +23,6 @@ public class ImageProject {
     
     public static void test(){
         MyImage iobj = new MyImage(3000,1500);
-        //iobj.readImage("D:\\Taj.jpg");
         DYMosaic.myColorMosaic(iobj, DYColor.Ruby_red, 100);
         iobj.writeImage("D:\\Taj2-hsi.png");
     }
