@@ -24,6 +24,6 @@ public class ImageProject {
     public static void test(){
         MyImage iobj = new MyImage(3000,1500);
         DYMosaic.myColorMosaic(iobj, DYColor.Ruby_red, 100);
-        iobj.writeImage("D:\\Mosaic.png");
+        iobj.writeImage("D:\\Mosaic-3000x1500.png");
     }
 }//class ImageProject ends here
