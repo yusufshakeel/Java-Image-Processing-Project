@@ -31,6 +31,8 @@ Directories:
 
  * src - Holds the source code files.
  * src/imageFX - This directory is the ENGINE of the project. It contains .java files to process image.
+ * src/imageFX/filter - This directory contains .Java files that performs filtering operations like median, mean filter etc.
+ * src/imageFX/morph - This directory contains .Java files that performs morphological operations like erosion, dilation etc.
  * src/myPackage - This directory contains .java files that uses the ENGINE to give output.
 
 Files:
@@ -42,6 +44,12 @@ Files:
  * src/imageFX/ImageFX.java - Contains common image processing functions like flip, negative etc.
  * src/imageFX/MyImage.java - Contains MyImage class that is used to create image objects.
  * src/imageFX/ThresholdImage.java - Contains thresholding methods.
+
+ * src/imageFX/filter/mean.java - To perform mean filter operation.
+ * src/imageFX/filter/median.java - To perform median filter operation.
+
+ * src/imageFX/morph/erosion - To perform erosion operation.
+ * src/imageFX/morph/dilation - To perform dilation operation.
 
 
 ### How to use the imageFX package in your project?
