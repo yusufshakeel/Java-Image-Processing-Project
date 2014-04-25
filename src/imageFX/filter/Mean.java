@@ -100,7 +100,7 @@ public class Mean {
     
     /**
      * Common names: Mean Filtering, Smoothing, Averaging, Box Filtering.
-     * This method is used to remove noise from image by averaging the neighbouring
+     * This method is used to remove noise from image by averaging the neighboring
      * pixels under the mask. Note! details from the image is also removed in this
      * process. Hence bigger the mask size more the detail lost.
      * This method will fill the pixels outside the mask with 0 value.
@@ -118,13 +118,13 @@ public class Mean {
      *   |7|8|9|8|7|
      *   +-+-+-+-+-+
      * 
-     * @param img The image object passed on which median filtering is performed.
+     * @param img The image object passed on which mean filtering is performed.
      * @param maskSize - The size of the mask is an odd integer like 3, 5, 7 … etc.
      */
     public static void meanFilter_ZeroFill(MyImage img, int maskSize){
         
         /** 
-         * This array will store the output of the median filter operation which will
+         * This array will store the output of the mean filter operation which will
          * be later written back to the original image pixels.
          */
         int outputPixels[] = new int[img.getImageTotalPixels()];
@@ -139,7 +139,7 @@ public class Mean {
          */
         int buff[];
         
-        /** Median Filter operation */
+        /** Mean Filter operation */
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
                 buff = new int[maskSize * maskSize];
@@ -198,13 +198,13 @@ public class Mean {
      *   |7|8|9|8|7|
      *   +-+-+-+-+-+
      * 
-     * @param img The image object passed on which median filtering is performed.
+     * @param img The image object passed on which mean filtering is performed.
      * @param maskSize - The size of the mask is an odd integer like 3, 5, 7 … etc.
      */
     public static void meanFilter_ValueFill(MyImage img, int maskSize){
         
         /** 
-         * This array will store the output of the median filter operation which will
+         * This array will store the output of the mean filter operation which will
          * be later written back to the original image pixels.
          */
         int outputPixels[] = new int[img.getImageTotalPixels()];
@@ -219,7 +219,7 @@ public class Mean {
          */
         int buff[];
         
-        /** Median Filter operation */
+        /** Mean Filter operation */
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
                 buff = new int[maskSize * maskSize];
