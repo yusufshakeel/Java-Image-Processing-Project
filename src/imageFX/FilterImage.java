@@ -60,7 +60,7 @@ public class FilterImage {
                 int count = 0;
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                        if(r < 0 || r >= img.getImageHeight() || c < 0 || c >= img.getImageWidth()){
                             /** Some portion of the mask is outside the image. */
                             continue;
                         }else{
@@ -114,7 +114,7 @@ public class FilterImage {
                 int count = 0;
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                        if(r < 0 || r >= img.getImageHeight() || c < 0 || c >= img.getImageWidth()){
                             /** Some portion of the mask is outside the image. */
                             continue;
                         }else{
@@ -185,7 +185,7 @@ public class FilterImage {
                 int i = 0;
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                        if(r < 0 || r >= img.getImageHeight() || c < 0 || c >= img.getImageWidth()){
                             /** Some portion of the mask is outside the image. */
                             buff[i] = 0;
                         }else{
@@ -248,7 +248,7 @@ public class FilterImage {
                 int i = 0;
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                        if(r < 0 || r >= img.getImageHeight() || c < 0 || c >= img.getImageWidth()){
                             /** Some portion of the mask is outside the image. */
                             int tr = r, tc = c;
                             if(r < 0){
@@ -324,7 +324,7 @@ public class FilterImage {
                 int i = 0;
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                        if(r < 0 || r >= img.getImageHeight() || c < 0 || c >= img.getImageWidth()){
                             /** Some portion of the mask is outside the image. */
                             buff[i] = 0;
                         }else{
@@ -400,7 +400,7 @@ public class FilterImage {
                 int i = 0;
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                        if(r < 0 || r >= img.getImageHeight() || c < 0 || c >= img.getImageWidth()){
                             /** Some portion of the mask is outside the image. */
                             int tr = r, tc = c;
                             if(r < 0){
