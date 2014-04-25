@@ -38,8 +38,8 @@ public class ThresholdImage {
      * 
      * For a given pixel at coordinate (x,y) average pixel value is
      * avgPixelValue = (r+g+b)/3
-     * If thresholdValue > avgPixelValue then set Pixel (x,y) to BLACK
-     * else set Pixel (x,y) to WHITE
+     * If thresholdValue > avgPixelValue then set Pixel (x,y) to white
+     * else set Pixel (x,y) to black
      * 
      * @param img the Image object passed on which thresholding is performed.
      * @param thresholdValue value to be compared with the average pixel value.
@@ -52,9 +52,9 @@ public class ThresholdImage {
                 int b = img.getBlue(x,y);
                 int avgPixelValue = (r+g+b)/3;
                 if(thresholdValue > avgPixelValue){
-                    img.setPixel(x,y,255,0,0,0);  //set BLACK                    
-                }else{
                     img.setPixel(x,y,255,255,255,255);  //set WHITE
+                }else{
+                    img.setPixel(x,y,255,0,0,0);  //set BLACK                    
                 }
             }
         }
