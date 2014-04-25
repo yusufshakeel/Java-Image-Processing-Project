@@ -43,11 +43,9 @@ Files:
  * src/imageFX/FilterImage.java - Contains filtering methods.
  * src/imageFX/ImageFX.java - Contains common image processing functions like flip, negative etc.
  * src/imageFX/MyImage.java - Contains MyImage class that is used to create image objects.
- * src/imageFX/ThresholdImage.java - Contains thresholding methods.
-
+ * src/imageFX/ThresholdImage.java - Containg thresholding methods.
  * src/imageFX/filter/mean.java - To perform mean filter operation.
  * src/imageFX/filter/median.java - To perform median filter operation.
-
  * src/imageFX/morph/dilation - To perform dilation operation.
  * src/imageFX/morph/erosion - To perform erosion operation.
  
