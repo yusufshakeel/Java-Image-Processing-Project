@@ -472,6 +472,19 @@ public class ImageFX {
             }
         }
     }
+    /**
+     * This method will color the entire image with a given color.
+     * 
+     * @param img The image object.
+     * @param color The color value.
+     */
+    public static void createColorImage(MyImage img, int color){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                img.setPixelToValue(x, y, color);
+            }
+        }
+    }
     
     /**
      * This method will crop the image img.
