@@ -48,8 +48,9 @@ Files:
  * src/imageFX/filter/mean.java - To perform mean filter operation.
  * src/imageFX/filter/median.java - To perform median filter operation.
 
- * src/imageFX/morph/erosion - To perform erosion operation.
  * src/imageFX/morph/dilation - To perform dilation operation.
+ * src/imageFX/morph/erosion - To perform erosion operation.
+ 
 
 
 ### How to use the imageFX package in your project?
