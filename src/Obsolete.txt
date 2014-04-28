@@ -1,7 +1,6 @@
 Obsolete Files and Replacement
 
-Obsolete File Name			Replacement
---------------------------------------------------------------------
-imageFX\FilterImage.java		imageFX\filter\*.java
-
-imageFX\ThresholdImage.java		imageFX\Threshold.java
+Date[dd-mm-yyyy]	Obsolete File					Replacement
+-----------------------------------------------------------------------------------
+28-04-2014		imageFX\FilterImage.java		imageFX\filter\*.java
+28-04-2014		imageFX\ThresholdImage.java		imageFX\Threshold.java
