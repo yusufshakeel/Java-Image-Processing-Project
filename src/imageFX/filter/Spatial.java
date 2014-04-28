@@ -1,5 +1,4 @@
 package imageFX.filter;
-
 import imageFX.ImageFX;
 import imageFX.MyImage;
 
