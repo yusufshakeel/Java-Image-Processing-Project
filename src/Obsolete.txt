@@ -1,0 +1,7 @@
+Obsolete Files and Replacement
+
+Obsolete File Name			Replacement
+--------------------------------------------------------------------
+imageFX\FilterImage.java		imageFX\filter\*.java
+
+imageFX\ThresholdImage.java		imageFX\Threshold.java
