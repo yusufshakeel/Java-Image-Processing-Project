@@ -1,5 +1,4 @@
 package imageFX.morph;
-
 import imageFX.MyImage;
 
 /**
