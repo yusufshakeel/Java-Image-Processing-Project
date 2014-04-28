@@ -51,9 +51,13 @@ public class DYMosaic {
         int buff = 20;
         int lim = Math.max(Math.max(r, g), b);
         lim = (((255-lim)/2)>buff)?buff:((255-lim)/2);
-                
-        for(int y = 0; y < img.getImageHeight(); y += mSize){
-            for(int x = 0; x < img.getImageWidth(); x += mSize){
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
+        
+        for(int y = 0; y < height; y += mSize){
+            for(int x = 0; x < width; x += mSize){
                 int c;
                 if(lim>0){
                     c = (int)(Math.random()*lim);
@@ -68,8 +72,8 @@ public class DYMosaic {
                 rgb[1] = (c+g)>0?(c+g):g;
                 rgb[2] = (c+b)>0?(c+b):b;
                 
-                for(int yi = 0; yi < mSize && y+yi < img.getImageHeight(); yi++){
-                    for(int xi = 0; xi < mSize && x+xi < img.getImageWidth(); xi++){
+                for(int yi = 0; yi < mSize && y+yi < height; yi++){
+                    for(int xi = 0; xi < mSize && x+xi < width; xi++){
                         img.setPixel(x+xi, y+yi, 255, rgb[0], rgb[1], rgb[2]);
                     }
                 }
