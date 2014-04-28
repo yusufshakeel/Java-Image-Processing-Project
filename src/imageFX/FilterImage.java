@@ -1,3 +1,13 @@
+/**
+ * NOTE! THIS FILE IS NO LONGER IN USE [OBSOLETE].
+ * Check:
+ * https://github.com/yusufshakeel/Java-Image-Processing-Project/blob/master/src/Obsolete.txt
+ * 
+ * for more details.
+ * 
+ */
+
+
 package imageFX;
 /**
  * File: FilterImage.java
