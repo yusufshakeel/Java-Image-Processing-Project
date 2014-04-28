@@ -57,26 +57,30 @@ public class DYCanvas {
          * be later written back to the original image pixels.
          */
         int outputPixels[] = new int[img.getImageTotalPixels()];
-
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
+        
         /** Sharpen operation */
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
                 /** Fill buff array */
                 int i = 0;
                 buff = new int[9];
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                        if(r < 0 || r >= height || c < 0 || c >= width){
                             /** Some portion of the mask is outside the image. */
                             int tr = r, tc = c;
                             if(r < 0){
                                 tr = r+1;
-                            }else if(r == img.getImageHeight()){
+                            }else if(r == height){
                                 tr = r-1;
                             }
                             if(c < 0){
                                 tc = c+1;
-                            }else if(c == img.getImageWidth()){
+                            }else if(c == width){
                                 tc = c-1;
                             }
                             buff[i] = img.getPixel(tc, tr);
@@ -94,13 +98,13 @@ public class DYCanvas {
                 }
                 
                 /** Save result in outputPixels array. */
-                outputPixels[x+(y*img.getImageWidth())] = sum;
+                outputPixels[x+y*width] = sum;
             }
         }
         /** Write the output pixels to the image pixels */
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
-                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageWidth())]);
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                img.setPixelToValue(x, y, outputPixels[x+y*width]);
             }
         }
     }
@@ -108,7 +112,7 @@ public class DYCanvas {
     /**
      * This method will mix colors.
      * 
-     * @param img The image to blur.
+     * @param img The image color to mix.
      */
     public static void colorMix2(MyImage img){
         
@@ -134,26 +138,30 @@ public class DYCanvas {
          * be later written back to the original image pixels.
          */
         int outputPixels[] = new int[img.getImageTotalPixels()];
-
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
+        
         /** Sharpen operation */
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
                 /** Fill buff array */
                 int i = 0;
                 buff = new int[9];
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                        if(r < 0 || r >= height || c < 0 || c >= width){
                             /** Some portion of the mask is outside the image. */
                             int tr = r, tc = c;
                             if(r < 0){
                                 tr = r+1;
-                            }else if(r == img.getImageHeight()){
+                            }else if(r == height){
                                 tr = r-1;
                             }
                             if(c < 0){
                                 tc = c+1;
-                            }else if(c == img.getImageWidth()){
+                            }else if(c == width){
                                 tc = c-1;
                             }
                             buff[i] = img.getPixel(tc, tr);
@@ -175,13 +183,13 @@ public class DYCanvas {
                 
                 /** Save result in outputPixels array. */
                 int p = ImageFX.getPixelValueFromARGBValue(sa, sr, sg, sb);
-                outputPixels[x+(y*img.getImageWidth())] = p;
+                outputPixels[x+y*width] = p;
             }
         }
         /** Write the output pixels to the image pixels */
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
-                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageWidth())]);
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                img.setPixelToValue(x, y, outputPixels[x+y*width]);
             }
         }
     }
@@ -189,7 +197,7 @@ public class DYCanvas {
     /**
      * This method will mix colors.
      * 
-     * @param img The image to blur.
+     * @param img The image color to mix.
      */
     public static void colorMix3(MyImage img){
         
@@ -215,26 +223,30 @@ public class DYCanvas {
          * be later written back to the original image pixels.
          */
         int outputPixels[] = new int[img.getImageTotalPixels()];
-
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
+        
         /** Sharpen operation */
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
                 /** Fill buff array */
                 int i = 0;
                 buff = new int[9];
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                        if(r < 0 || r >= height || c < 0 || c >= width){
                             /** Some portion of the mask is outside the image. */
                             int tr = r, tc = c;
                             if(r < 0){
                                 tr = r+1;
-                            }else if(r == img.getImageHeight()){
+                            }else if(r == height){
                                 tr = r-1;
                             }
                             if(c < 0){
                                 tc = c+1;
-                            }else if(c == img.getImageWidth()){
+                            }else if(c == width){
                                 tc = c-1;
                             }
                             buff[i] = img.getPixel(tc, tr);
@@ -256,13 +268,13 @@ public class DYCanvas {
                 
                 /** Save result in outputPixels array. */
                 int p = ImageFX.getPixelValueFromARGBValue(sa, sr, sg, sb);
-                outputPixels[x+(y*img.getImageWidth())] = p;
+                outputPixels[x+y*width] = p;
             }
         }
         /** Write the output pixels to the image pixels */
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
-                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageWidth())]);
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                img.setPixelToValue(x, y, outputPixels[x+y*width]);
             }
         }
     }
@@ -280,8 +292,17 @@ public class DYCanvas {
      * @param photoImg The image object that holds the photo image.
      */
     public static void Layer_pictureText(MyImage textImg, MyImage photoImg){
-        for(int y = 0; y < textImg.getImageHeight(); y++){
-            for(int x = 0; x < textImg.getImageWidth(); x++){
+        //test image dimension
+        int tWidth = textImg.getImageWidth();
+        int tHeight = textImg.getImageHeight();
+        
+        //photo image dimension
+        int pWidth = photoImg.getImageWidth();
+        int pHeight = photoImg.getImageHeight();
+        int pTotalPixel = photoImg.getImageTotalPixels();
+        
+        for(int y = 0; y < tHeight; y++){
+            for(int x = 0; x < tWidth; x++){
                 //get text image RGB value
                 int r = textImg.getRed(x, y);
                 int g = textImg.getGreen(x, y);
@@ -289,7 +310,7 @@ public class DYCanvas {
                 
                 //check whether pixel is not WHITE
                 if(r != 255 || g != 255 || b != 255){
-                    if((x+y*photoImg.getImageWidth())<= photoImg.getImageTotalPixels()){
+                    if((x+y*pWidth)<= pTotalPixel){
                         //photo image exists below text image. take photo image RGB value
                         r = photoImg.getRed(x, y);
                         g = photoImg.getGreen(x, y);
