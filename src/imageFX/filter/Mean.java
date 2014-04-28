@@ -1,9 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package imageFX.filter;
-
 import imageFX.ImageFX;
 import imageFX.MyImage;
 
