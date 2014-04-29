@@ -15,7 +15,7 @@ import imageFX.MyImage;
  * 
  * @author Yusuf Shakeel
  * @version 1.0
- * date: 24-042014 Thu
+ * date: 24-04-2014 Thu
  * 
  * www.github.com/yusufshakeel/Java-Image-Processing-Project
  * 
@@ -50,9 +50,9 @@ public class Dilation {
      * For dilation we generally consider the background pixel. So, dilateBlackPixel = true.
      * 
      * @param img The image on which dilation operation is performed
-     * @param dilateBlackPixel If set to TRUE will perform dilation on BLACK pixels else on WHITE pixels.
+     * @param dilateBackgroundPixel If set to TRUE will perform dilation on BLACK pixels else on WHITE pixels.
      */
-    public static void binaryImage(MyImage img, boolean dilateBlackPixel){
+    public static void binaryImage(MyImage img, boolean dilateBackgroundPixel){
         /**
          * Dimension of the image img.
          */
@@ -70,7 +70,7 @@ public class Dilation {
          * else
          * targetValue = 255;  //for WHITE pixels
          */
-        int targetValue = (dilateBlackPixel == true)?0:255;
+        int targetValue = (dilateBackgroundPixel == true)?0:255;
         
         /**
          * If the target pixel value is WHITE (255) then the reverse pixel value will
