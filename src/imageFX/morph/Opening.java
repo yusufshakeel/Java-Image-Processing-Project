@@ -13,7 +13,7 @@ import imageFX.MyImage;
  * 
  * @author Yusuf Shakeel
  * @version 1.0
- * date: 24-042014 Thu
+ * date: 24-04-2014 Thu
  * 
  * www.github.com/yusufshakeel/Java-Image-Processing-Project
  * 
