@@ -15,7 +15,7 @@ import imageFX.MyImage;
  * 
  * @author Yusuf Shakeel
  * @version 1.0
- * date: 24-042014 Thu
+ * date: 24-04-2014 Thu
  * 
  * www.github.com/yusufshakeel/Java-Image-Processing-Project
  * 
@@ -47,12 +47,12 @@ public class Erosion {
      * WHITE pixel has the ARGB value (255,255,255,255)
      * BLACK pixel has the ARGB value (255,0,0,0)
      * 
-     * For erosion we generally consider foreground pixel. So, erodeBlackpixel = false
+     * For erosion we generally consider foreground pixel. So, erodeForegroundPixel = true
      * 
      * @param img The image on which erosion operation is performed
-     * @param erodeBlackPixel If set to TRUE will perform erosion on BLACK pixels else on WHITE pixels.
+     * @param erodeForegroundPixel If set to TRUE will perform erosion on WHITE pixels else on BLACK pixels.
      */
-    public static void binaryImage(MyImage img, boolean erodeBlackPixel){
+    public static void binaryImage(MyImage img, boolean erodeForegroundPixel){
         /**
          * Dimension of the image img.
          */
@@ -70,7 +70,7 @@ public class Erosion {
          * else
          * targetValue = 255;  //for WHITE pixels
          */
-        int targetValue = (erodeBlackPixel == true)?0:255;
+        int targetValue = (erodeForegroundPixel == true)?0:255;
         
         /**
          * If the target pixel value is WHITE (255) then the reverse pixel value will
