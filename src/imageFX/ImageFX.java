@@ -728,33 +728,26 @@ public class ImageFX {
         int buff[];
         
         /** 
-         * This array will store the output of the median filter operation which will
+         * This array will store the output of the sharpen operation which will
          * be later written back to the original image pixels.
          */
         int outputPixels[] = new int[img.getImageTotalPixels()];
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
 
         /** Sharpen operation */
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
                 /** Fill buff array */
                 int i = 0;
                 buff = new int[9];
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                        if(r < 0 || r >= height || c < 0 || c >= width){
                             /** Some portion of the mask is outside the image. */
-                            int tr = r, tc = c;
-                            if(r < 0){
-                                tr = r+1;
-                            }else if(r == img.getImageHeight()){
-                                tr = r-1;
-                            }
-                            if(c < 0){
-                                tc = c+1;
-                            }else if(c == img.getImageWidth()){
-                                tc = c-1;
-                            }
-                            buff[i] = img.getPixel(tc, tr);
+                            buff[i] = 0;
                         }else{
                             buff[i] = img.getPixel(c, r);
                         }
@@ -773,13 +766,13 @@ public class ImageFX {
                 
                 /** Save result in outputPixels array. */
                 int p = getPixelValueFromARGBValue(sa,sr,sg,sb);
-                outputPixels[x+(y*img.getImageWidth())] = p;
+                outputPixels[x+y*width] = p;
             }
         }
         /** Write the output pixels to the image pixels */
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
-                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageWidth())]);
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                img.setPixelToValue(x, y, outputPixels[x+y*width]);
             }
         }
     }
@@ -806,33 +799,26 @@ public class ImageFX {
         int buff[];
         
         /** 
-         * This array will store the output of the median filter operation which will
+         * This array will store the output of the blur operation which will
          * be later written back to the original image pixels.
          */
         int outputPixels[] = new int[img.getImageTotalPixels()];
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
 
         /** Sharpen operation */
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
                 /** Fill buff array */
                 int i = 0;
                 buff = new int[9];
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                        if(r < 0 || r >= height || c < 0 || c >= width){
                             /** Some portion of the mask is outside the image. */
-                            int tr = r, tc = c;
-                            if(r < 0){
-                                tr = r+1;
-                            }else if(r == img.getImageHeight()){
-                                tr = r-1;
-                            }
-                            if(c < 0){
-                                tc = c+1;
-                            }else if(c == img.getImageWidth()){
-                                tc = c-1;
-                            }
-                            buff[i] = img.getPixel(tc, tr);
+                            buff[i] = 0;
                         }else{
                             buff[i] = img.getPixel(c, r);
                         }
@@ -851,13 +837,13 @@ public class ImageFX {
                 
                 /** Save result in outputPixels array. */
                 int p = getPixelValueFromARGBValue(sa, sr, sg, sb);
-                outputPixels[x+(y*img.getImageWidth())] = p;
+                outputPixels[x+y*width] = p;
             }
         }
         /** Write the output pixels to the image pixels */
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
-                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageWidth())]);
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                img.setPixelToValue(x, y, outputPixels[x+y*width]);
             }
         }
     }
@@ -890,33 +876,26 @@ public class ImageFX {
         int buff[];
         
         /** 
-         * This array will store the output of the median filter operation which will
+         * This array will store the output of the blur operation which will
          * be later written back to the original image pixels.
          */
         int outputPixels[] = new int[img.getImageTotalPixels()];
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height= img.getImageHeight();
 
         /** Sharpen operation */
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
                 /** Fill buff array */
                 int i = 0;
                 buff = new int[9];
                 for(int r = y - (maskSize / 2); r <= y + (maskSize / 2); r++){
                     for(int c = x - (maskSize / 2); c <= x + (maskSize / 2); c++){
-                        if(r < 0 || r == img.getImageHeight() || c < 0 || c == img.getImageWidth()){
+                        if(r < 0 || r >= height || c < 0 || c >= width){
                             /** Some portion of the mask is outside the image. */
-                            int tr = r, tc = c;
-                            if(r < 0){
-                                tr = r+1;
-                            }else if(r == img.getImageHeight()){
-                                tr = r-1;
-                            }
-                            if(c < 0){
-                                tc = c+1;
-                            }else if(c == img.getImageWidth()){
-                                tc = c-1;
-                            }
-                            buff[i] = img.getPixel(tc, tr);
+                            buff[i] = 0;
                         }else{
                             buff[i] = img.getPixel(c, r);
                         }
@@ -935,13 +914,13 @@ public class ImageFX {
                 
                 /** Save result in outputPixels array. */
                 int p = getPixelValueFromARGBValue(sa, sr, sg, sb);
-                outputPixels[x+(y*img.getImageWidth())] = p;
+                outputPixels[x+y*width] = p;
             }
         }
         /** Write the output pixels to the image pixels */
-        for(int y = 0; y < img.getImageHeight(); y++){
-            for(int x = 0; x < img.getImageWidth(); x++){
-                img.setPixelToValue(x, y, outputPixels[x+(y*img.getImageWidth())]);
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                img.setPixelToValue(x, y, outputPixels[x+y*width]);
             }
         }
     }
