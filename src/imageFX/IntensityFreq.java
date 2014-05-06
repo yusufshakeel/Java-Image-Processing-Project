@@ -33,6 +33,8 @@ package imageFX;
  */
 public class IntensityFreq {
     
+    ///////////////////////////// GRAYSCALE IMAGE //////////////////////////////
+    
     /**
      * This will return the maximum intensity frequency of the grayscale image img.
      * 
@@ -102,6 +104,224 @@ public class IntensityFreq {
         
         return minIntensity;
     }
+    
+    ///////////////////////////// RED IMAGE ////////////////////////////////////
+    
+    /**
+     * This will return the maximum intensity frequency of the RED image img.
+     * 
+     * @param img The RED image.
+     * @return maximum intensity.
+     */
+    public static int red_getMax(MyImage img){
+        int intensityFreq[] = new int[256];
+        int maxFreq = 0;
+        int maxIntensity = 0;
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
+        
+        //get intensity
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                intensityFreq[img.getRed(x, y)]++;
+            }
+        }
+        
+        //search max intensity
+        for(int i = 0; i < 256; i++){
+            if(intensityFreq[i] > maxFreq){
+                maxIntensity = i;
+                maxFreq = intensityFreq[i];
+            }
+        }
+        
+        return maxIntensity;
+    }
+    
+    /**
+     * This will return the minimum intensity frequency of the RED image img.
+     * 
+     * @param img The RED image.
+     * @return minimum intensity.
+     */
+    public static int red_getMin(MyImage img){
+        int intensityFreq[] = new int[256];
+        int minFreq;
+        int minIntensity;
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
+        
+        //get intensity
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                intensityFreq[img.getRed(x, y)]++;
+            }
+        }
+        
+        //minIntensity
+        minFreq = width*height + 1;
+        minIntensity = 0;
+        
+        //search min intensity
+        for(int i = 0; i < 256; i++){
+            if(intensityFreq[i] < minFreq && intensityFreq[i] > 0){
+                minIntensity = i;
+                minFreq = intensityFreq[i];
+            }
+        }
+        
+        return minIntensity;
+    }
+    
+    ///////////////////////////// GREEN IMAGE //////////////////////////////////
+    
+    /**
+     * This will return the maximum intensity frequency of the GREEN image img.
+     * 
+     * @param img The GREEN image.
+     * @return maximum intensity.
+     */
+    public static int green_getMax(MyImage img){
+        int intensityFreq[] = new int[256];
+        int maxFreq = 0;
+        int maxIntensity = 0;
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
+        
+        //get intensity
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                intensityFreq[img.getGreen(x, y)]++;
+            }
+        }
+        
+        //search max intensity
+        for(int i = 0; i < 256; i++){
+            if(intensityFreq[i] > maxFreq){
+                maxIntensity = i;
+                maxFreq = intensityFreq[i];
+            }
+        }
+        
+        return maxIntensity;
+    }
+    
+    /**
+     * This will return the minimum intensity frequency of the GREEN image img.
+     * 
+     * @param img The GREEN image.
+     * @return minimum intensity.
+     */
+    public static int green_getMin(MyImage img){
+        int intensityFreq[] = new int[256];
+        int minFreq;
+        int minIntensity;
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
+        
+        //get intensity
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                intensityFreq[img.getGreen(x, y)]++;
+            }
+        }
+        
+        //minIntensity
+        minFreq = width*height + 1;
+        minIntensity = 0;
+        
+        //search min intensity
+        for(int i = 0; i < 256; i++){
+            if(intensityFreq[i] < minFreq && intensityFreq[i] > 0){
+                minIntensity = i;
+                minFreq = intensityFreq[i];
+            }
+        }
+        
+        return minIntensity;
+    }
+    
+    ///////////////////////////// BLUE IMAGE ///////////////////////////////////
+    
+    /**
+     * This will return the maximum intensity frequency of the BLUE image img.
+     * 
+     * @param img The BLUE image.
+     * @return maximum intensity.
+     */
+    public static int blue_getMax(MyImage img){
+        int intensityFreq[] = new int[256];
+        int maxFreq = 0;
+        int maxIntensity = 0;
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
+        
+        //get intensity
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                intensityFreq[img.getBlue(x, y)]++;
+            }
+        }
+        
+        //search max intensity
+        for(int i = 0; i < 256; i++){
+            if(intensityFreq[i] > maxFreq){
+                maxIntensity = i;
+                maxFreq = intensityFreq[i];
+            }
+        }
+        
+        return maxIntensity;
+    }
+    
+    /**
+     * This will return the minimum intensity frequency of the BLUE image img.
+     * 
+     * @param img The BLUE image.
+     * @return minimum intensity.
+     */
+    public static int blue_getMin(MyImage img){
+        int intensityFreq[] = new int[256];
+        int minFreq;
+        int minIntensity;
+        
+        //image dimension
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
+        
+        //get intensity
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                intensityFreq[img.getBlue(x, y)]++;
+            }
+        }
+        
+        //minIntensity
+        minFreq = width*height + 1;
+        minIntensity = 0;
+        
+        //search min intensity
+        for(int i = 0; i < 256; i++){
+            if(intensityFreq[i] < minFreq && intensityFreq[i] > 0){
+                minIntensity = i;
+                minFreq = intensityFreq[i];
+            }
+        }
+        
+        return minIntensity;
+    }
+    
+    ///////////////////////////// COLOR IMAGE //////////////////////////////////
     
     /**
      * This will return the maximum intensity frequency of the color image img.
