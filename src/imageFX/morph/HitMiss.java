@@ -95,7 +95,7 @@ public class HitMiss {
         }
         
         /**
-         * Save the dilation value in image img.
+         * Save the hit miss value in image img.
          */
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
