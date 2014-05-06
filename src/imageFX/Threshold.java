@@ -76,6 +76,74 @@ public class Threshold {
         }
     }
     
+    /**
+     * This method will threshold the RED image using RED pixel only. It will generate a binary image.
+     * 
+     * For a given pixel at coordinate (x,y)
+     * If R > thresholdValue then set Pixel (x,y) to white
+     * else set Pixel (x,y) to black
+     * 
+     * @param img The red image to threshold.
+     * @param thresholdValue value to be compared with the R pixel value.
+     */
+    public static void redPixel(MyImage img, int thresholdValue){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int r = img.getRed(x,y);
+                if(r > thresholdValue){
+                    img.setPixel(x,y,255,255,255,255);  //set WHITE
+                }else{
+                    img.setPixel(x,y,255,0,0,0);  //set BLACK                    
+                }
+            }
+        }
+    }
+    
+    /**
+     * This method will threshold the GREEN image using GREEN pixel only. It will generate a binary image.
+     * 
+     * For a given pixel at coordinate (x,y)
+     * If G > thresholdValue then set Pixel (x,y) to white
+     * else set Pixel (x,y) to black
+     * 
+     * @param img The green image to threshold.
+     * @param thresholdValue value to be compared with the G pixel value.
+     */
+    public static void greenPixel(MyImage img, int thresholdValue){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int g = img.getGreen(x,y);
+                if(g > thresholdValue){
+                    img.setPixel(x,y,255,255,255,255);  //set WHITE
+                }else{
+                    img.setPixel(x,y,255,0,0,0);  //set BLACK                    
+                }
+            }
+        }
+    }
+    
+    /**
+     * This method will threshold the BLUE image using BLUE pixel only. It will generate a binary image.
+     * 
+     * For a given pixel at coordinate (x,y)
+     * If B > thresholdValue then set Pixel (x,y) to white
+     * else set Pixel (x,y) to black
+     * 
+     * @param img The blue image to threshold.
+     * @param thresholdValue value to be compared with the R pixel value.
+     */
+    public static void bluePixel(MyImage img, int thresholdValue){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int b = img.getBlue(x,y);
+                if(b > thresholdValue){
+                    img.setPixel(x,y,255,255,255,255);  //set WHITE
+                }else{
+                    img.setPixel(x,y,255,0,0,0);  //set BLACK                    
+                }
+            }
+        }
+    }
     
     //////////////////////////// AUTO THRESHOLDING /////////////////////////////
     
