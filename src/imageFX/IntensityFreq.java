@@ -40,7 +40,8 @@ public class IntensityFreq {
      * @return maximum intensity.
      */
     public static int grayscale_getMax(MyImage img){
-        int intensity[] = new int[256];
+        int intensityFreq[] = new int[256];
+        int maxFreq = 0;
         int maxIntensity = 0;
         
         //image dimension
@@ -50,14 +51,15 @@ public class IntensityFreq {
         //get intensity
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
-                intensity[img.getRed(x, y)]++;
+                intensityFreq[img.getRed(x, y)]++;
             }
         }
         
         //search max intensity
         for(int i = 0; i < 256; i++){
-            if(intensity[i] > maxIntensity){
-                maxIntensity = intensity[i];
+            if(intensityFreq[i] > maxFreq){
+                maxIntensity = i;
+                maxFreq = intensityFreq[i];
             }
         }
         
@@ -71,8 +73,9 @@ public class IntensityFreq {
      * @return minimum intensity.
      */
     public static int grayscale_getMin(MyImage img){
-        int intensity[] = new int[256];
-        int minIntensity = 256;
+        int intensityFreq[] = new int[256];
+        int minFreq;
+        int minIntensity;
         
         //image dimension
         int width = img.getImageWidth();
@@ -81,14 +84,19 @@ public class IntensityFreq {
         //get intensity
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
-                intensity[img.getRed(x, y)]++;
+                intensityFreq[img.getRed(x, y)]++;
             }
         }
         
+        //minIntensity
+        minFreq = width*height + 1;
+        minIntensity = 0;
+        
         //search min intensity
         for(int i = 0; i < 256; i++){
-            if(intensity[i] < minIntensity){
-                minIntensity = intensity[i];
+            if(intensityFreq[i] < minFreq && intensityFreq[i] > 0){
+                minIntensity = i;
+                minFreq = intensityFreq[i];
             }
         }
         
@@ -113,8 +121,9 @@ public class IntensityFreq {
          * :
          * 255
          */
-        int intensity[][] = new int[256][3];
+        int intensityFreq[][] = new int[256][3];
         int maxIntensity[] = new int[3];
+        int maxFreq[] = new int[3];
         
         //image dimension
         int width = img.getImageWidth();
@@ -123,27 +132,30 @@ public class IntensityFreq {
         //get intensity
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
-                intensity[img.getRed(x, y)][0]++;
-                intensity[img.getGreen(x, y)][1]++;
-                intensity[img.getBlue(x, y)][2]++;
+                intensityFreq[img.getRed(x, y)][0]++;
+                intensityFreq[img.getGreen(x, y)][1]++;
+                intensityFreq[img.getBlue(x, y)][2]++;
             }
         }
         
         //search max intensity
         for(int i = 0; i < 256; i++){
             //max red
-            if(intensity[i][0] > maxIntensity[0]){
-                maxIntensity[0] = intensity[i][0];
+            if(intensityFreq[i][0] > maxFreq[0]){
+                maxIntensity[0] = i;
+                maxFreq[0] = intensityFreq[i][0];
             }
             
             //max green
-            if(intensity[i][1] > maxIntensity[1]){
-                maxIntensity[1] = intensity[i][1];
+            if(intensityFreq[i][1] > maxFreq[1]){
+                maxIntensity[1] = i;
+                maxFreq[1] = intensityFreq[i][1];
             }
             
             //max blue
-            if(intensity[i][2] > maxIntensity[2]){
-                maxIntensity[2] = intensity[i][2];
+            if(intensityFreq[i][2] > maxFreq[2]){
+                maxIntensity[2] = i;
+                maxFreq[2] = intensityFreq[i][2];
             }
         }
         
@@ -168,8 +180,9 @@ public class IntensityFreq {
          * :
          * 255
          */
-        int intensity[][] = new int[256][3];
-        int minIntensity[] = new int[]{256,256,256};
+        int intensityFreq[][] = new int[256][3];
+        int minIntensity[] = new int[3];
+        int minFreq[] = new int[3];
         
         //image dimension
         int width = img.getImageWidth();
@@ -178,27 +191,38 @@ public class IntensityFreq {
         //get intensity
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
-                intensity[img.getRed(x, y)][0]++;
-                intensity[img.getGreen(x, y)][1]++;
-                intensity[img.getBlue(x, y)][2]++;
+                intensityFreq[img.getRed(x, y)][0]++;
+                intensityFreq[img.getGreen(x, y)][1]++;
+                intensityFreq[img.getBlue(x, y)][2]++;
             }
         }
         
+        //initialize
+        minFreq[0] = width*height + 1;
+        minFreq[1] = width*height + 1;
+        minFreq[2] = width*height + 1;
+        minIntensity[0] = 0;
+        minIntensity[1] = 0;
+        minIntensity[2] = 0;
+
         //search min intensity
         for(int i = 0; i < 256; i++){
             //min red
-            if(intensity[i][0] < minIntensity[0]){
-                minIntensity[0] = intensity[i][0];
+            if(intensityFreq[i][0] < minFreq[0] && intensityFreq[i][0] > 0){
+                minIntensity[0] = i;
+                minFreq[0] = intensityFreq[i][0];
             }
             
             //min green
-            if(intensity[i][1] < minIntensity[1]){
-                minIntensity[1] = intensity[i][1];
+            if(intensityFreq[i][1] < minFreq[1] && intensityFreq[i][1] > 0){
+                minIntensity[1] = i;
+                minFreq[1] = intensityFreq[i][1];
             }
             
             //min blue
-            if(intensity[i][2] < minIntensity[2]){
-                minIntensity[2] = intensity[i][2];
+            if(intensityFreq[i][2] < minFreq[2] && intensityFreq[i][2] > 0){
+                minIntensity[2] = i;
+                minFreq[2] = intensityFreq[i][2];
             }
         }
         
