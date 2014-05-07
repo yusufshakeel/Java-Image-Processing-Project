@@ -52,7 +52,7 @@ public class HitMiss {
      * @param mask 2D array of square mask.
      * @param maskSize The size of the square mask - no. of rows.
      */
-    public static void binaryImage(MyImage img,int mask[][], int maskSize){
+    public static void binaryImage(MyImage img,int mask[], int maskSize){
         /**
          * Dimension of the image img.
          */
@@ -74,12 +74,12 @@ public class HitMiss {
                         if(ty >= 0 && ty < height && tx >= 0 && tx < width){
                             
                             //for don't-care value in mask
-                            if(mask[mr][mc] > 1){
+                            if(mask[mc+mr*maskSize] > 1){
                                 continue;
                             }
                                 
                             //if image pixel not same as mask
-                            if(img.getRed(tx, ty) != (mask[mr][mc]*255)){
+                            if(img.getRed(tx, ty) != (mask[mc+mr*maskSize]*255)){
                                 flag = true;
                                 output[x+y*width] = 0;  //BLACK
                                 break;
