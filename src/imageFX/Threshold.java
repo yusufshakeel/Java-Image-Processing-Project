@@ -366,7 +366,7 @@ public class Threshold {
                 break;
             }
         }
-        
+
         /** performing thresholding on the image pixels */
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
