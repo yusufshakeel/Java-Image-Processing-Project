@@ -48,7 +48,7 @@ public class HitMiss {
      * 1 for WHITE i.e., FOREGROUND
      * 2 for DON'T CARE
      * 
-     * @param img The image on which dilation operation is performed
+     * @param img The image on which hit miss operation is performed
      * @param mask 2D array of square mask.
      * @param maskSize The size of the square mask - no. of rows.
      */
