@@ -58,8 +58,11 @@ public class MyImage {
      * Image type example: jpg|png 
      * JPG does not support alpha (transparency is lost) while PNG supports alpha.
      */
-    private enum FileType{JPG, PNG}
-    private FileType imageType;
+    private enum ImageType{
+        JPG, PNG
+    };
+    
+    private ImageType imgType;
     
     ////////////////////////////////// CONSTRUCTORS ////////////////////////////
     
@@ -78,7 +81,7 @@ public class MyImage {
         this.totalPixels = this.width * this.height;
         this.pixels = new int[this.totalPixels];
         image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_ARGB);
-        this.imageType = FileType.PNG;
+        this.imgType = ImageType.PNG;
         initPixelArray();
     }
     
@@ -92,9 +95,21 @@ public class MyImage {
         this.height = img.getImageHeight();
         this.totalPixels = this.width * this.height;
         this.pixels = new int[this.totalPixels];
-        this.image = img.image;
-        this.imageType = img.imageType;
-        initPixelArray();
+        
+        this.imgType = img.imgType;
+        if(this.imgType == ImageType.PNG){
+            this.image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        }else{
+            this.image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        }
+        
+        //copy original image pixels value to new image and pixels array
+        for(int y = 0; y < this.height; y++){
+            for(int x = 0; x < this.width; x++){
+                this.image.setRGB(x, y, img.getPixel(x, y));
+                this.pixels[x+y*this.width] = img.getPixel(x, y);
+            }
+        }
     }
     
     /////////////////////////////////////// METHODS ////////////////////////////
@@ -111,7 +126,7 @@ public class MyImage {
         this.height = height;
         this.totalPixels = this.width * this.height;
         this.pixels = new int[this.totalPixels];
-        if(this.imageType == FileType.PNG){
+        if(this.imgType == ImageType.PNG){
             this.image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         }else{
             this.image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -134,9 +149,9 @@ public class MyImage {
             image = ImageIO.read(f);
             String fileType = filePath.substring(filePath.lastIndexOf('.')+1);
             if("jpg".equals(fileType)){
-                imageType = FileType.JPG;
+                imgType = ImageType.JPG;
             }else{
-                imageType = FileType.PNG;
+                imgType = ImageType.PNG;
             }
             this.width = image.getWidth();
             this.height = image.getHeight();
@@ -280,6 +295,15 @@ public class MyImage {
     }
     
     /**
+     * This method will return the pixel value of the image as 1D array.
+     * 
+     * @return 1D array containing value of each pixels of the image.
+     */
+    public int[] getPixelArray(){
+        return pixels;
+    }
+        
+    /**
      * This method will set the amount of alpha value between 0-255 at the pixel (x,y)
      * 
      * @param x the x coordinate of the pixel
@@ -364,6 +388,20 @@ public class MyImage {
     public void setPixelToValue(int x, int y, int pixelValue){
         pixels[x+(y*width)] = pixelValue;
         updateImagePixelAt(x,y);
+    }
+    
+    /**
+     * This method will set the image pixel array to the value of the 1D pixelArray.
+     * 
+     * @param pixelArray 1D array containing values that is set to the image pixel array.77
+     */
+    public void setPixelArray(int pixelArray[]){
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                pixels[x+y*width] = pixelArray[x+y*width];
+                updateImagePixelAt(x,y);
+            }
+        }
     }
     
     /**
