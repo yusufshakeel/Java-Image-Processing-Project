@@ -7,6 +7,7 @@ import imageFX.math.LogicalOR;
  * 
  * Description:
  * This will find the corner points in the image.
+ * It uses HitMiss morphological concept.
  * 
  * @author Yusuf Shakeel
  * @version 1.0
