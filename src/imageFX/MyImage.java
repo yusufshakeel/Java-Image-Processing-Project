@@ -201,6 +201,35 @@ public class MyImage {
     }
     
     /**
+     * This method will check for equality of two images.
+     * If we have two image img1 and img2
+     * Then calling img1.isEqual(img2) will return TRUE if img1 and img2 are equal
+     * else it will return FALSE.
+     * 
+     * @param img The image to check with.
+     * @return TRUE if two images are equal else FALSE.
+     */
+    public boolean isEqual(MyImage img){
+        //check dimension
+        if(this.width != img.getImageWidth() || this.height != img.getImageHeight()){
+            return false;
+        }
+        
+        //check pixel values
+        for(int y = 0; y < this.height; y++){
+            for(int x = 0; x < this.width; x++){
+                if(this.pixels[x+y*this.width] != img.getPixel(x, y)){
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    
+    /////////////////////////// GET, SET AND UPDATE METHODS ////////////////////
+    
+    /**
      * Return the image width
      * 
      * @return the width of the image
