@@ -1,7 +1,7 @@
 Java-Image-Processing-Project
 =============================
 
-DY imageFX - Image Processing project
+DY imageFX - Open Source - Image Processing project
 
 By: Yusuf Shakeel
 
@@ -24,47 +24,15 @@ This project is in development stage so files will get modified quite often.
 I have used NetBeans IDE 7.3.1 for this project. It is a free software and you can download it from there website [netbeans.org] (https://netbeans.org)
 
 
-Content
--------
-
-Directories:
-
- * src - Holds the source code files.
- * src/imageFX - This directory is the ENGINE of the project. It contains .java files to process image.
- * src/imageFX/filter - This directory contains .java files that performs filtering operations like median, mean filter etc.
- * src/imageFX/math - This directory contains .java file that performs mathematical operations and logical bitwise operation.
- * src/imageFX/morph - This directory contains .java files that performs morphological operations like erosion, dilation etc.
- * src/myPackage - This directory contains .java files that uses the ENGINE to give output.
-
-
-
-### How to use the imageFX package in your project?
-
-1. Download the [Java-Image-Processing-Project](https://github.com/yusufshakeel/Java-Image-Processing-Project) repository and copy paste the imageFX directory inside your project directory.
-2. Import the imageFX classes inside your java file(s) where you want to use it.
-
-For instance, if you want to import the imageFX classes inside your Test.java file, then write the following line
-
-`import imageFX.*;`
-
-inside your Test.java file.
-
-So your Test.java file may look something like this
-
-    import java.io.*;
-
-    import imageFX.*;
-
-    public class Test{
-
-        //your code goes here...
-
-    }//class Test ends here
-
-
 ### Project wiki [https://github.com/yusufshakeel/Java-Image-Processing-Project/wiki] (https://github.com/yusufshakeel/Java-Image-Processing-Project/wiki)
 
-### Download the DYimageFX-javadoc for more details.
+### [Download](https://github.com/yusufshakeel/Java-Image-Processing-Project/tree/master/DYimageFX-jar) DYimageFX jar file to use it in your project.
+
+### [Download](https://github.com/yusufshakeel/Java-Image-Processing-Project/blob/master/DYimageFX-javadoc/DYimageFX-javadoc-1.0.140510.zip?raw=true) DYimageFX-javadoc for more details.
+
+
+### You can also [download](https://github.com/yusufshakeel/Java-Image-Processing-Project/archive/master.zip) the entire project code.
+
 
 # License
 
