@@ -119,6 +119,7 @@ public class Median {
         /** Median Filter operation */
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
+                int a = img.getAlpha(x, y);
                 red = new int[maskSize * maskSize];
                 green = new int [maskSize * maskSize];
                 blue = new int [maskSize * maskSize];
@@ -143,7 +144,8 @@ public class Median {
                 java.util.Arrays.sort(blue);
                 
                 /** save median value in outputPixels array */
-                int p = ImageFX.getPixelValueFromARGBValue(255, red[count/2], green[count/2], blue[count/2]);
+                int index = (count%2 == 0)?count/2-1:count/2;
+                int p = ImageFX.getPixelValueFromARGBValue(a, red[index], green[index], blue[index]);
                 outputPixels[x+y*width] = p;
             }
         }
