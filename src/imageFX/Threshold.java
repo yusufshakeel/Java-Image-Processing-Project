@@ -67,7 +67,29 @@ public class Threshold {
                 int g = img.getGreen(x,y);
                 int b = img.getBlue(x,y);
                 int avgPixelValue = (r+g+b)/3;
-                if(avgPixelValue > thresholdValue){
+                if(avgPixelValue >= thresholdValue){
+                    img.setPixel(x,y,255,255,255,255);  //set WHITE
+                }else{
+                    img.setPixel(x,y,255,0,0,0);  //set BLACK                    
+                }
+            }
+        }
+    }
+    
+    /**
+     * This method will threshold the image. It will generate a binary image.
+     * 
+     * @param img the Image object passed on which thresholding is performed.
+     * @param thresholdValue value to be compared with the average pixel value.
+     */
+    public static void toBinary(MyImage img, int thresholdValue){
+        for(int y = 0; y < img.getImageHeight(); y++){
+            for(int x = 0; x < img.getImageWidth(); x++){
+                int r = img.getRed(x,y);
+                int g = img.getGreen(x,y);
+                int b = img.getBlue(x,y);
+                int tmp = (int)(0.2126*r + 0.7152*g + 0.0722*b);
+                if(tmp >= thresholdValue){
                     img.setPixel(x,y,255,255,255,255);  //set WHITE
                 }else{
                     img.setPixel(x,y,255,0,0,0);  //set BLACK                    
@@ -90,7 +112,7 @@ public class Threshold {
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
                 int r = img.getRed(x,y);
-                if(r > thresholdValue){
+                if(r >= thresholdValue){
                     img.setPixel(x,y,255,255,255,255);  //set WHITE
                 }else{
                     img.setPixel(x,y,255,0,0,0);  //set BLACK                    
@@ -113,7 +135,7 @@ public class Threshold {
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
                 int g = img.getGreen(x,y);
-                if(g > thresholdValue){
+                if(g >= thresholdValue){
                     img.setPixel(x,y,255,255,255,255);  //set WHITE
                 }else{
                     img.setPixel(x,y,255,0,0,0);  //set BLACK                    
@@ -136,7 +158,7 @@ public class Threshold {
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
                 int b = img.getBlue(x,y);
-                if(b > thresholdValue){
+                if(b >= thresholdValue){
                     img.setPixel(x,y,255,255,255,255);  //set WHITE
                 }else{
                     img.setPixel(x,y,255,0,0,0);  //set BLACK                    
@@ -221,7 +243,7 @@ public class Threshold {
                 int b = img.getBlue(x, y);
                 int avgOfRGB = (r+g+b)/3;
                 
-                if(avgOfRGB > thresholdValue){
+                if(avgOfRGB >= thresholdValue){
                     img.setPixel(x,y,255,255,255,255);  //set WHITE
                 }else{
                     img.setPixel(x,y,255,0,0,0);  //set BLACK                    
@@ -296,7 +318,7 @@ public class Threshold {
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
                 int r = img.getRed(x,y);
-                if(r > thresholdValue){
+                if(r >= thresholdValue){
                     img.setPixel(x,y,255,255,255,255);  //set WHITE
                 }else{
                     img.setPixel(x,y,255,0,0,0);  //set BLACK                    
@@ -371,7 +393,7 @@ public class Threshold {
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
                 int g = img.getGreen(x,y);
-                if(g > thresholdValue){
+                if(g >= thresholdValue){
                     img.setPixel(x,y,255,255,255,255);  //set WHITE
                 }else{
                     img.setPixel(x,y,255,0,0,0);  //set BLACK                    
@@ -446,7 +468,7 @@ public class Threshold {
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
                 int b = img.getBlue(x,y);
-                if(b > thresholdValue){
+                if(b >= thresholdValue){
                     img.setPixel(x,y,255,255,255,255);  //set WHITE
                 }else{
                     img.setPixel(x,y,255,0,0,0);  //set BLACK                    
@@ -518,7 +540,7 @@ public class Threshold {
                 mean = blue/count - C;
                 
                 //adaptive threshold - mean
-                if(img.getBlue(x, y) > mean){
+                if(img.getBlue(x, y) >= mean){
                     output[x+y*width] = 0xffffffff;     //WHITE
                 }else{
                     output[x+y*width] = 0xff000000;     //BLACK
@@ -584,7 +606,7 @@ public class Threshold {
                 median = blue[count/2] - C;
                 
                 //adaptive threshold - median
-                if(img.getBlue(x, y) > median){
+                if(img.getBlue(x, y) >= median){
                     output[x+y*width] = 0xffffffff;     //WHITE
                 }else{
                     output[x+y*width] = 0xff000000;     //BLACK
@@ -652,7 +674,7 @@ public class Threshold {
                 t = ((max+min)/2) - C;
                 
                 //adaptive threshold - maxmin
-                if(img.getBlue(x, y) > t){
+                if(img.getBlue(x, y) >= t){
                     output[x+y*width] = 0xffffffff;     //WHITE
                 }else{
                     output[x+y*width] = 0xff000000;     //BLACK
