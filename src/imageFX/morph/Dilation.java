@@ -173,4 +173,73 @@ public class Dilation {
             }
         }
     }
+    
+    /**
+     * This method will perform dilation operation on the grayscale image img.
+     * It will find the maximum value among the pixels that are under the mask [element value 1] and will
+     * set the origin to the maximum value.
+     * 
+     * @param img The image on which dilation operation is performed
+     * @param mask the square mask.
+     * @param maskSize the size of the square mask. [i.e., number of rows]
+     */
+    public static void grayscaleImage(MyImage img, int mask[], int maskSize){
+        /**
+         * Dimension of the image img.
+         */
+        int width = img.getImageWidth();
+        int height = img.getImageHeight();
+        
+        //buff
+        int buff[];
+        
+        //output of dilation
+        int output[] = new int[width*height];
+        
+        //perform dilation
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                buff = new int[maskSize * maskSize];
+                int i = 0;
+                for(int ty = y - maskSize/2, mr = 0; ty <= y + maskSize/2; ty++, mr++){
+                   for(int tx = x - maskSize/2, mc = 0; tx <= x + maskSize/2; tx++, mc++){
+                       /**
+                        * Sample 3x3 mask [kernel or structuring element]
+                        * [0, 1, 0
+                        *  1, 1, 1
+                        *  0, 1, 0]
+                        * 
+                        * Only those pixels of the image img that are under the mask element 1 are considered.
+                        */
+                       if(ty >= 0 && ty < height && tx >= 0 && tx < width){
+                           //pixel under the mask
+                           
+                           if(mask[mc+mr*maskSize] != 1){
+                               continue;
+                           }
+                           
+                           buff[i] = img.getRed(tx, ty);
+                           i++;
+                       }
+                   }
+                }
+                
+                //sort buff
+                java.util.Arrays.sort(buff);
+                
+                //save lowest value
+                output[x+y*width] = buff[(maskSize*maskSize) - 1];
+            }
+        }
+        
+        /**
+         * Save the dilation value in image img.
+         */
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                int v = output[x+y*width];
+                img.setPixel(x, y, 255, v, v, v);
+            }
+        }
+    }
 }//class ends here
