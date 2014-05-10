@@ -1,7 +1,4 @@
-Current version: 1.0.140509
-Date: 09-05-2014 Fri
-
-DYimageFX-jar file
+DYimageFX-<version>.jar file
 
 
 How to use the jar file in your project?
