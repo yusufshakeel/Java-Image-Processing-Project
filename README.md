@@ -26,12 +26,12 @@ I have used NetBeans IDE 7.3.1 for this project. It is a free software and you c
 
 ### Project wiki [https://github.com/yusufshakeel/Java-Image-Processing-Project/wiki] (https://github.com/yusufshakeel/Java-Image-Processing-Project/wiki)
 
-### [Download](https://github.com/yusufshakeel/Java-Image-Processing-Project/tree/master/DYimageFX-jar) DYimageFX jar file to use it in your project.
+### Download [DYimageFX-jar](https://github.com/yusufshakeel/Java-Image-Processing-Project/tree/master/DYimageFX-jar) file to use it in your project.
 
-### [Download](https://github.com/yusufshakeel/Java-Image-Processing-Project/blob/master/DYimageFX-javadoc/DYimageFX-javadoc-1.0.140510.zip?raw=true) DYimageFX-javadoc for more details.
+### Download [DYimageFX-javadoc](https://github.com/yusufshakeel/Java-Image-Processing-Project/blob/master/DYimageFX-javadoc/DYimageFX-javadoc-1.0.140510.zip?raw=true) for more details.
 
 
-### You can also [download](https://github.com/yusufshakeel/Java-Image-Processing-Project/archive/master.zip) the entire project code.
+### You can also download the entire [project code](https://github.com/yusufshakeel/Java-Image-Processing-Project/archive/master.zip).
 
 
 # License
