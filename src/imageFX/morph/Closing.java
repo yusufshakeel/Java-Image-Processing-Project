@@ -40,17 +40,24 @@ import imageFX.MyImage;
 public class Closing {
     
     /**
-     * This method will perform closing on image img.
-     * 
-     * For erosion we generally consider foreground pixel. So, erodeBlackpixel = false
-     * For dilation we generally consider the background pixel. So, dilateBlackPixel = true.
+     * This method will perform closing on binary image img.
      * 
      * @param img The image on which opening is performed.
-     * @param erodeBlackPixel If set to TRUE will perform erosion on BLACK pixels else on WHITE pixels.
-     * @param dilateBlackPixel If set to TRUE will perform dilation on BLACK pixels else on WHITE pixels.
      */
-    public static void binaryImage(MyImage img, boolean erodeBlackPixel, boolean dilateBlackPixel){
-        Dilation.binaryImage(img, dilateBlackPixel);
-        Erosion.binaryImage(img, erodeBlackPixel);
+    public static void binaryImage(MyImage img){
+        Dilation.binaryImage(img, true);
+        Erosion.binaryImage(img, true);
+    }
+    
+    /**
+     * This method will perform closing on grayscale image img.
+     * 
+     * @param img The image on which opening is performed.
+     * @param mask The square mask
+     * @param maskSize The size of the square mask [No. of rows or columns of the square mask]
+     */
+    public static void grayscaleImage(MyImage img, int mask[], int maskSize){
+        Dilation.grayscaleImage(img, mask, maskSize);
+        Erosion.grayscaleImage(img, mask, maskSize);
     }
 }//class ends here
