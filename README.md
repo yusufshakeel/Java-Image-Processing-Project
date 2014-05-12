@@ -28,7 +28,7 @@ I have used NetBeans IDE 7.3.1 for this project. It is a free software and you c
 
 ### Download [DYimageFX-jar](https://github.com/yusufshakeel/Java-Image-Processing-Project/tree/master/DYimageFX-jar) file to use it in your project.
 
-### Download [DYimageFX-javadoc](https://github.com/yusufshakeel/Java-Image-Processing-Project/blob/master/DYimageFX-javadoc/DYimageFX-javadoc-1.0.140510.zip?raw=true) for more details.
+### Download [DYimageFX-javadoc](https://github.com/yusufshakeel/Java-Image-Processing-Project/blob/master/DYimageFX-javadoc) for more details.
 
 
 ### You can also download the entire [project code](https://github.com/yusufshakeel/Java-Image-Processing-Project/archive/master.zip).
