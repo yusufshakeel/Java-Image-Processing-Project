@@ -1,7 +1,7 @@
 Java-Image-Processing-Project
 =============================
 
-DY imageFX - Open Source - Image Processing project
+DYimageFX - Open Source - Image Processing project
 
 By: Yusuf Shakeel
 
