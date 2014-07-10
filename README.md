@@ -5,7 +5,7 @@ DYimageFX - Open Source - Image Processing project
 
 By: Yusuf Shakeel
 
-Date: 26-Jan-2014 Sunday
+Date: 26 January 2014 Sunday
 
 
 [facebook.com/yusufshakeel](https://www.facebook.com/yusufshakeel)
